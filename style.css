@@ -1,0 +1,21 @@
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-modal-body {
+  width: 80%;
+  /* Adjust the desired width value */
+  margin: 0 auto;
+  /* Center the modal body horizontally */
+}
+.loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
