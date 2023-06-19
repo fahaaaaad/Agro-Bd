@@ -1,3 +1,28 @@
+
+<?php
+$showAlert = false;
+$showError = false;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include 'partials/_dbconnect.php';
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+    $exists=false;
+    if(($password == $cpassword) && $exists==false){
+        $sql = "INSERT INTO `users` ( `username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
+        $result = mysqli_query($conn, $sql);
+        if ($result){
+            $showAlert = true;
+        }
+    }
+    else{
+        $showError = "Passwords do not match";
+    }
+}
+    
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -15,11 +40,28 @@
     <!-- css first -->
     <script>0</script>
 
+    
+      <?php
+    if($showAlert){
+    echo ' <div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> You are ready to login.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+    }
+    if($showError){
+    echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> '. $showError.'
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div> ';
+    }
+    ?>
+    
     <!-- Header -->
-    <?php require 'partials/_header.php'?>
-
-    <!-- body -->
-
+    <?php require 'partials/_header.php' ?>
+   
+    <!-- slider -->
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -202,8 +244,6 @@
 
     <!-- footer -->
     <?php require 'partials/_footer.php'?>
-
-
 
     <script>
       // Start carousel and set auto-cycle interval
