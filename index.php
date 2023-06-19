@@ -1,3 +1,28 @@
+<?php
+$showAlert = false;
+$showError = false;
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include 'partials/_dbconnect.php';
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    $cpassword = $_POST["cpassword"];
+    $exists=false;
+    if(($password == $cpassword) && $exists==false){
+        $sql = "INSERT INTO `users` ( `username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
+        $result = mysqli_query($conn, $sql);
+        if ($result){
+            $showAlert = true;
+        }
+    }
+    else{
+        $showError = "Passwords do not match";
+    }
+}
+    
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -12,6 +37,22 @@
   </head>
 
   <body>
+      <?php
+    if($showAlert){
+    echo ' <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>';
+    }
+    if($showError){
+    echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> '. $showError.'
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div> ';
+    }
+    ?>
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -58,8 +99,11 @@
           <div class="mx-2">
 
 
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Loginmodal">
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
               Login
+            </button>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#Loginmodal2">
+              signup
             </button>
 
             <!-- Modal -->
@@ -73,26 +117,70 @@
                   </div>
                   <div class="modal-body ">
                     <form>
-                      <img class="mb-4" src="logo.jpg" alt="" width="100" height="100">
+                      <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
                       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                      <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingInput">
+                        <label for="floatingInput">username</label>
                       </div>
-                      <div class="form-floating">
+                      <div class="form-floating my-3">
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                       </div>
 
-                      <div class="checkbox mb-3">
-                        <label>
-                          <input type="checkbox" value="remember-me"> Remember me
+                      <div class="form-check text-start my-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Remember me
                         </label>
                       </div>
-                      <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                      <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
 
-                      <button type="button" class="mt-4 btn btn-danger">Forget Password</button>
+
+                    </form>
+
+
+                  </div>
+                  <div class="modal-footer">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal2 -->
+            <!-- Signuplogin modal -->
+            <div class="modal fade" id="Loginmodal2" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body ">
+                    <!-- form action -->
+                    <form action="" method="post">
+                      <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                      <h1 class="h3 mb-3 fw-normal">Please signup</h1>
+
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="username" name="username">
+                        <label for="floatingInput">username</label>
+                      </div>
+                      <div class="form-floating my-3">
+                        <input type="password" class="form-control" id="Password" placeholder="Password"
+                          name="password">
+                        <label for="password">Password</label>
+                      </div>
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="cpassword" name="cpassword">
+                        <label for="cpassword">Confirm Passworf</label>
+                      </div>
+
+                      <button class="btn btn-primary w-100 py-2" type="submit">signup</button>
+
+
                     </form>
 
 
