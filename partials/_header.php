@@ -1,3 +1,4 @@
+
 <script>0</script>
 <!-- Header -->
 
@@ -11,7 +12,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
 
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
@@ -99,56 +99,108 @@
         </li>
 
       </ul>
+          <div class="mx-2">
 
-      <div class="mx-2">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Loginmodal">
-          Login
-        </button>
 
-        <!-- Modal -->
-        <!-- login modal -->
-        <div class="modal fade" id="Loginmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body ">
-                <form>
-                  <img class="mb-4" src="logo.jpg" alt="" width="100" height="100">
-                  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
+              Login
+            </button>
+            <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#Loginmodal2">
+              signup
+            </button>
 
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
+            <!-- Modal -->
+            <!-- login modal -->
+            <div class="modal fade" id="Loginmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
+                  <div class="modal-body ">
+                    <form>
+                      <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="floatingInput">
+                        <label for="floatingInput">username</label>
+                      </div>
+                      <div class="form-floating my-3">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                      </div>
+
+                      <div class="form-check text-start my-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Remember me
+                        </label>
+                      </div>
+                      <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+
+
+                    </form>
+
+
                   </div>
+                  <div class="modal-footer">
 
-                  <div class="checkbox mb-3">
-                    <label>
-                      <input type="checkbox" value="remember-me"> Remember me
-                    </label>
                   </div>
-                  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-
-                  <button type="button" class="mt-4 btn btn-danger">Forget Password</button>
-                </form>
-              </div>
-
-              <div class="modal-footer">
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <button type="button" class="btn btn-secondary">En</button>
-        <div style="margin-left: 10px;">
-          <button type="button" class="btn btn-success">Bd</button>
+            <!-- Modal2 -->
+            <!-- Signuplogin modal -->
+            <div class="modal fade" id="Loginmodal2" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body ">
+                    <!-- form action -->
+                    <form action="" method="post">
+                      <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                      <h1 class="h3 mb-3 fw-normal">Please signup</h1>
+
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="username" name="username">
+                        <label for="floatingInput">username</label>
+                      </div>
+                      <div class="form-floating my-3">
+                        <input type="password" class="form-control" id="Password" placeholder="Password"
+                          name="password">
+                        <label for="password">Password</label>
+                      </div>
+                      <div class="form-floating my-3">
+                        <input type="text" class="form-control" id="cpassword" name="cpassword">
+                        <label for="cpassword">Confirm Passworf</label>
+                      </div>
+
+                      <button class="btn btn-primary w-100 py-2" type="submit">signup</button>
+
+
+                    </form>
+
+
+                  </div>
+                  <div class="modal-footer">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-secondary">En</button>
+            <button type="button" class="btn btn-success">Bd</button>
+          </div>
+
+
+
         </div>
       </div>
-    </div>
-</nav>
+      </div>
+    </nav>
