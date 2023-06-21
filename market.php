@@ -11,8 +11,10 @@
   <!-- Header -->
     <?php require 'partials/_header.php' ?>
 
+    
 
-<div class="container mt-10">
+
+<div class="container my-10">
   <div class="row">
   <?php
   $server = "localhost";
