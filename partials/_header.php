@@ -32,7 +32,7 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a href="#">Contact</a>
+                  <li><a href="contact.php">Contact</a>
                   </li>
                   <li>
                     <hr class="dropdown-divider">
