@@ -59,6 +59,8 @@
 
       <!-- Section: Links -->
     </div>
+
+    <hr>
     <!-- Grid container -->
 
     <!-- Copyright -->
