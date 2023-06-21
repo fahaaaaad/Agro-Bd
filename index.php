@@ -232,7 +232,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               for
               ensuring long-term agricultural success. This blog post dives deep into the realm of sustainable farming,
               providing a comprehensive guide that covers various aspects of this innovative approach.</p>
-            <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+            
+            <button type="button" class="btn btn-outline-success lead mb-0"><a href="market.php" class="text-white fw-bold">Continue reading...</a></button>
           </div>
           <div class="col-md-6 px-0">
             <img src="big_card.jpg" alt="Image description" class="img-fluid" style="height: 400px;">
@@ -241,6 +242,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       </div>
 
     </div>
+
+    
 
     <!-- footer -->
     <?php require 'partials/_footer.php'?>
