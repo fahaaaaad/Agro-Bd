@@ -4,10 +4,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Be a Farmer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <title>Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
@@ -15,6 +15,14 @@
   </head>
 
   <body class="bg-body-tertiary">
+    <!-- css first -->
+    <script>0</script>
+
+    <!-- Header -->
+    <?php require 'partials/_header.php'?>
+
+    <!-- body -->
+
     <div class="container">
       <main>
         <div class="text-center">
@@ -233,23 +241,25 @@
       </main>
     </div>
 
+    <!-- footer -->
+    <?php require 'partials/_footer.php'?>
 
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+
+
+    <script>
+      // Start carousel and set auto-cycle interval
+      document.addEventListener("DOMContentLoaded", function () {
+        var myCarousel = document.getElementById("carouselExampleCaptions");
+        var carousel = new bootstrap.Carousel(myCarousel, {
+          interval: 3000, // Change slide every 3 seconds (3000 milliseconds)
+          wrap: true // Enable looping of slides
+        });
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
-    <div id="scrnli_recorder_root"></div>
 
-    <script src="checkout.js"></script>
-
-    <iframe src="chrome-extension://ijejnggjjphlenbhmjhhgcdpehhacaal/audio-devices.html" allow="microphone"
-      style="display: none;"></iframe><input type="file" id="" name="file" style="display: none;">
-    <div data-v-f3fb3dc8="">
-      <div data-v-f3fb3dc8="" class="container_selected_area" style="cursor: crosshair;"></div>
-      <div data-v-f3fb3dc8="" class="area" style="left: 0px; top: 0px; width: 0px; height: 0px;"></div>
-    </div>
-    <div id="site-usage-rating"
-      style="position: fixed; width: 80px; height: 80px; bottom: 40px; right: 40px; color: black; border-radius: 50px; text-align: center; z-index: 9999; font-size: 13px; padding: 6px; font-family: monospace; line-height: 15px; overflow-wrap: normal; background-color: green; opacity: 0;">
-      Site Malicious Rate<br><b>0.0</b></div>
   </body>
-
 </html>
