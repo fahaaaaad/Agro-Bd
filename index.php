@@ -159,11 +159,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
 
-              <h3 class="mb-0">Agriculture Companies</h3>
+              <h3 class="mb-0">Our Companies</h3>
 
               <p class="mb-auto">We work with agricultural input companies and service providers, offering quality
-                agriculture input and advisory
-                services to the farmers
+                agriculture input.
               </p>
 
             </div>
