@@ -143,7 +143,7 @@
                   <li class="nav-item dropdown"><a href="#">Product Types<i class="fas fa-caret-right"></i></a>
                     <div class="dropdown-menu-1">
                       <ul>
-                        <li style="padding-top: 12px;"><a href="#">Animal Feed</a></li>
+                        <li style="padding-top: 12px;"><a href="animal_feed.php">Animal Feed</a></li>
                         <li>
                           <hr class="dropdown-divider">
                         </li>
