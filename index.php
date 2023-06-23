@@ -161,8 +161,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
               <h3 class="mb-0">Our Companies</h3>
 
-              <p class="mb-auto">We work with agricultural input companies and service providers, offering quality
-                agriculture input.
+              <p class="mb-auto"> Empowering Farmers with Proven Tips, Quality Supplies, and Seamless Shopping Experience..
               </p>
 
             </div>
