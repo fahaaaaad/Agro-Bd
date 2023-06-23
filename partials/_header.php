@@ -147,11 +147,11 @@
                         <li>
                           <hr class="dropdown-divider">
                         </li>
-                        <li><a href="#">Fish Feed</a></li>
+                        <li><a href="fish_feed.php">Fish Feed</a></li>
                         <li>
                           <hr class="dropdown-divider">
                         </li>
-                        <li><a href="#">Poultry Feed</a></li>
+                        <li><a href="poultry.php">Poultry Feed</a></li>
                       </ul>
                     </div>
                   </li>
