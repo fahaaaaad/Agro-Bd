@@ -182,11 +182,8 @@
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a href="#"> For Funders</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a href="#"> Agri-Input</a></li>
+                  <li><a href="funders.php"> For Funders</a></li>
+                  
                   <li>
                     <hr class="dropdown-divider">
                   </li>
