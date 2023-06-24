@@ -101,7 +101,7 @@
 
                     <div class="dropdown-menu-1">
                       <ul>
-                        <li style="padding-top: 12px;"><a href="cow.php">Cow</a></li>
+                        <li class="nav-item dropdown" style="padding-top: 12px;"><a href="cow.php">Cow</a></li>
                         <li>
                           <hr class="dropdown-divider">
                         </li>
@@ -175,35 +175,15 @@
               <a class="nav-link dropdown-toggle" href="#">Our Products</a>
               <div class="dropdown-menu">
                 <ul>
-<<<<<<< HEAD
-                  <li><a href="#">Animal Feed</a>
-=======
-                  <li class="nav-item dropdown"><a href="#">Product Types<i class="fas fa-caret-right"></i></a>
-                    <div class="dropdown-menu-1">
-                      <ul>
-                        <li style="padding-top: 12px;"><a href="animal_feed.php">Animal Feed</a></li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li><a href="fish_feed.php">Fish Feed</a></li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li><a href="poultry.php">Poultry Feed</a></li>
-                      </ul>
-                    </div>
->>>>>>> ff25d23d08b47260b481d0e3c73005795a787ff5
-                  </li>
+                  <li><a href="animal_feed.php">Animal Feed</a><li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a href="contact.php">Fish Feed</a>
-                  </li>
+                  <li><a href="fish_feed.php">Fish Feed</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a href="#">Poultry Feed</a>
-                  </li>
+                  <li><a href="poultry.php">Poultry Feed</a></li>
                 </ul>
               </div>
             </li>

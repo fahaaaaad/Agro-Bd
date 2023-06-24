@@ -30,12 +30,12 @@
     <div class="container my-5 text-center"> <!-- Added text-center class -->
       <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
         <h1 class="section-header landing-section-title title-font">
-          Cattle Farming Tools and Supplies
+          Cattle Feeds
         </h1>
 
         <div class="landing-section-content">
-          <div>Unlock the potential of your cattle farm with our comprehensive range of high-performance tools and supplies for efficient and profitable operations. </div>
-          <div>Empower your cattle farming operation with top-quality tools and supplies tailored for success.</div>
+          <div>Unlock the potential of your cattle farm with our comprehensive range of high-quality feeds for efficient and profitable farming. </div>
+          <div>Grow your cattles operation with top-quality feeds tailored for success.</div>
         </div>
       </div>
     </div>
@@ -44,49 +44,43 @@
 <div class="container-fluid">
   <div class="row">
   <?php
-  $server = "localhost";
-  $username = "root";
-  $password = "";
-  $database = "market";
+  include 'partials/_dbconnect.php';
 
-  $conn = mysqli_connect($server, $username, $password, $database);
-  if (!$conn) {
-      die("Error: " . mysqli_connect_error());
-  }
-
-  $sql = "SELECT * FROM `shopping`";
+  $sql = "SELECT * FROM `cattleFeed`";
   $result = mysqli_query($conn, $sql);
   $sno = 0;
 
   while ($row = mysqli_fetch_assoc($result)) {
-      $sno = $sno + 1;
-      if ($sno % 5 == 1) {
-          echo "<div class='w-100'></div>";
-      }
+    $sno = $sno + 1;
+    if ($sno % 5 == 1) {
       echo "
-      <div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
-        <div class='card shadow-sm'>
+        <div class='w-100'></div>";
+    }
+      echo "
+        <div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
+          <div class='card shadow-sm'>
 
-        <img class='bd-placeholder-img card-img-top' width='100%' height='225' src=".$row['image']."> 
-          
-          <div class='card-body'>
-            <p class='card-text'>" . $row['name'] . "</p>
-            <p class='card-text'>Price:"  . $row['price'] . "Tk</p>
-            <div class='d-flex justify-content-between align-items-center'>
-              <div class='btn-group'>
-                <button type='button' class='btn btn-sm btn-outline-secondary'>Add To Cart</button>
-                <button type='button' class='btn btn-sm btn-outline-secondary'>Quantity</button>
+            <img class='bd-placeholder-img card-img-top' width='100%' height='225' src= 'uploads/".$row['image']."'> 
+            
+            <div class='card-body'>
+              <p class='card-text'>" . $row['name'] . "</p>
+              <p class='card-text'>Price:"  . $row['price'] . "Tk</p>
+              <div class='d-flex justify-content-between align-items-center'>
+                <div class='btn-group'>
+                  <button type='button' class='btn btn-sm btn-outline-secondary'>Add To Cart</button>
+                  <button type='button' class='btn btn-sm btn-outline-secondary'>Quantity</button>
+                </div>
               </div>
-              
             </div>
           </div>
         </div>
-      </div>";
+      ";
   }
 
   mysqli_close($conn);
+  // echo'src="uploads/<?php echo $row['photo']"';
   ?>
-</div>
+  </div>
 </div>
 
 
