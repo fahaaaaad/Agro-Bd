@@ -1,0 +1,30 @@
+.Rcol h5 {
+  margin-bottom: 2px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+  max-width: 500px;
+  display: flex;
+}
+.input-group label {
+  margin-bottom: 0;
+  max-height: 28px;
+  min-width: fit-content;
+  padding: 2px 6px 0px 0px;
+}
+.input-group input {
+  max-height: 34px;
+}
+.input-group select {
+  max-height: 34px;
+  padding: 2px 12px 2px 12px;
+}
+.input-group2 input {
+  margin: 0;
+  border: 0;
+  padding: 6px 12px 6px 0px;
+}
+.degree-group {
+  margin-bottom: 10px;
+}

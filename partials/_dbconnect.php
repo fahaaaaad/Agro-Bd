@@ -1,15 +1,24 @@
+
 <?php
-$server = "localhost";
+
+//connecting to the database
+$servername = "localhost";
 $username = "root";
 $password = "";
-$database = "users";
+$database = "agrobd";
 
-$conn = mysqli_connect($server, $username, $password, $database);
+// creat a connection
+
+// $conn = mysqli_connect($servername, $username, $password);
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+//die if connection was not successful
 if (!$conn){
-//     echo "success";
-// }
-// else{
-    die("Error". mysqli_connect_error());
+    die("Sorry we failed to connect: ". mysqli_connect_error());
 }
+
+// $sql = "CREATE DATABASE ytdemo";
+
 
 ?>

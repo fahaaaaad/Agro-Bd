@@ -58,3 +58,22 @@
   background-color: #fff;
   border-radius: 8px;
 }
+
+.dropdown-menu-2 {
+  padding: 0;
+  display: none;
+}
+.dropdown-menu-1 ul li:hover .dropdown-menu-2 {
+  display: block;
+  position: absolute;
+  padding: 3px;
+  left: 230px;
+  top: 0;
+  background-color: #fff;
+  border-radius: 8px;
+}
+/* .hero {
+  height: calc(100vh - 80px);
+  background-image: url(./bg.jpg);
+  background-position: center;
+} */
