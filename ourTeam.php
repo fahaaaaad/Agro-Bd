@@ -1,153 +1,88 @@
 <!doctype html>
 <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agro-Bd</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/headerNestedDropdown.css" />
+  <style>
+    #carouselExampleSlidesOnly img {
+      max-height: 700px; /* Adjust the max-height as desired */
+      object-fit: contain; /* Maintain image aspect ratio */
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <?php require 'partials/_header.php' ?>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/headerNestedDropdown.css" />
+  <!-- our team -->
+  <div class="container my-5 text-center"> <!-- Added text-center class -->
+      <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
+        <h1 class="section-header landing-section-title title-font">
+         Our Team
+        </h1>
 
-  </head>
-
-  <body>
-    <!-- css first -->
-    <script>0</script>
-
-    <!-- Header -->
-    <?php require 'partials/_header.php'?>
-
-    <!-- body -->
-
-    <div class="container my-20">
-      <div class="row featurette d-flex justify-content-center align-items-center" style="margin-bottom: 50px;">
-        <div class="col-md-7">
-          <h2 class="featurette-heading fw-normal lh-1">Md. Fahad Miah <span class="text-body-secondary">As a farming
-              website developer,.</span></h2>
-          <p class="lead">I invite you to join me in revolutionizing agriculture through digital transformation.
-            Together, we'll cultivate the future, blending innovation and tradition on virtual fields. Our tailor-made
-            websites empower farmers with the tools for success, bridging functionality and aesthetics. Let us sow the
-            seeds
-            of
-            digital success, harnessing technology to grow a thriving community of progressive farmers. Join me on this
-            exciting
-            journey where farming and technology unite, yielding growth and prosperity. Together, we will nurture the
-            digital
-            soil and harvest the rewards of our collective efforts. Embrace the digital age, and let's cultivate a
-            brighter
-            future for agriculture.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle"
-            width="300" height="300" src="fahad.jpg" alt="" srcset="" style="margin-top: 50px;">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-          </svg>
-        </div>
-      </div>
-      <hr>
-
-
-      <div class="row featurette d-flex justify-content-center align-items-center" style=" margin-bottom: 50px;">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading fw-normal lh-1">Shyan Tusher <span class="text-body-secondary">As a farming
-              website developer,.</span></h2>
-          <p class="lead">I invite you to join me in revolutionizing agriculture through digital transformation.
-            Together, we will cultivate the future, blending innovation and tradition on virtual fields. Our tailor-made
-            websites empower farmers with the tools for success, bridging functionality and aesthetics. Let us sow the
-            seeds
-            of
-            digital success, harnessing technology to grow a thriving community of progressive farmers. Join me on this
-            exciting
-            journey where farming and technology unite, yielding growth and prosperity. Together, we will nurture the
-            digital
-            soil and harvest the rewards of our collective efforts. Embrace the digital age, and let's cultivate a
-            brighter
-            future for agriculture.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rounded-circle"
-            width="300" height="300" src="tusher.jpg" alt="" srcset="">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-          </svg>
-        </div>
-      </div>
-      <hr>
-      <div class="row featurette d-flex justify-content-center align-items-center" style="margin-bottom: 50px;">
-        <div class="col-md-7">
-          <h2 class="featurette-heading fw-normal lh-1">Mahmudul Hasan <span class="text-body-secondary">As a farming
-              website developer,.</span></h2>
-          <p class="lead">I invite you to join me in revolutionizing agriculture through digital transformation.
-            Together, we will cultivate the future, blending innovation and tradition on virtual fields. Our tailor-made
-            websites empower farmers with the tools for success, bridging functionality and aesthetics. Let us sow the
-            seeds
-            of
-            digital success, harnessing technology to grow a thriving community of progressive farmers. Join me on this
-            exciting
-            journey where farming and technology unite, yielding growth and prosperity. Together, we will nurture the
-            digital
-            soil and harvest the rewards of our collective efforts. Embrace the digital age, and let's cultivate a
-            brighter
-            future for agriculture.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto " width="700"
-            height="700" src="https://source.unsplash.com/random/1200x400/?people" alt="" srcset="">
-          <title>Placeholder</title>
-          <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-          </svg>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="container">
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Launch demo modal
-      </button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
+        <div class="landing-section-content">
+          <div>With a collaborative spirit and a wealth of expertise, .</div>
+          <div>our team works tirelessly to deliver outstanding results.</div>
         </div>
       </div>
     </div>
+  
+  <!-- About Slider -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="fahad.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="tush.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="mahamudul.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
 
+  <!-- sponsor -->
+<div class="container text-center">
+  <div class="row">
+    <h1 class="mb-4">Our Investors</h1>
+    <hr>
+    <div class="col"><img src="1.png" class="img-thumbnail" alt="..."></div>
+    <div class="col"><img src="2.png" class="img-thumbnail" alt="..."></div>
+    <div class="col"><img src="3.png" class="img-thumbnail" alt="..."></div>
+    <div class="col"><img src="4.png" class="img-thumbnail" alt="..."></div>
+    
+  </div>
+</div>
 
-    <script>
-      // Start carousel and set auto-cycle interval
-      document.addEventListener("DOMContentLoaded", function () {
-        var myCarousel = document.getElementById("carouselExampleCaptions");
-        var carousel = new bootstrap.Carousel(myCarousel, {
-          interval: 3000, // Change slide every 3 seconds (3000 milliseconds)
-          wrap: true // Enable looping of slides
-        });
-      });
-    </script>
+<!-- join our team-->
+    <div class="bg-dark text-secondary px-6 py-5 text-center mt-5 mb-5">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Join Our Team</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Join our dynamic team and embark on an exciting career journey. We value our people and foster an inclusive and collaborative work environment. Work on cutting-edge projects alongside industry experts, making a meaningful impact. Whether you're an experienced professional or starting your career, we offer diverse opportunities to unleash your full potential. Join us in shaping the future of our industry, driving innovation and success. Experience a supportive and growth-oriented culture that encourages creativity and embraces new ideas. Together, let's make a difference and achieve remarkable success.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">View Careers</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"></script>
-  </body>
+  <!-- footer -->
+    <?php require 'partials/_footer.php'?>
 
+   
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
 </html>

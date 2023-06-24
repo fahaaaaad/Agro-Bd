@@ -117,11 +117,9 @@
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
 
-              <h3 class="mb-0">Agriculture Companies</h3>
+              <h3 class="mb-0">Our Companies</h3>
 
-              <p class="mb-auto">We work with agricultural input companies and service providers, offering quality
-                agriculture input and advisory
-                services to the farmers
+              <p class="mb-auto"> Empowering Farmers with Proven Tips, Quality Supplies, and Seamless Shopping Experience..
               </p>
 
             </div>
@@ -193,9 +191,14 @@
               for
               ensuring long-term agricultural success. This blog post dives deep into the realm of sustainable farming,
               providing a comprehensive guide that covers various aspects of this innovative approach.</p>
+<<<<<<< HEAD
 
             <button type="button" class="btn btn-outline-success lead mb-0"><a href="market.php"
                 class="text-white fw-bold">Continue reading...</a></button>
+=======
+            
+            
+>>>>>>> ff25d23d08b47260b481d0e3c73005795a787ff5
           </div>
           <div class="col-md-6 px-0">
             <img src="big_card.jpg" alt="Image description" class="img-fluid" style="height: 400px;">
