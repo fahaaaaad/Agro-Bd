@@ -1,3 +1,70 @@
+<?php
+
+
+  // $NowDate =  new DateTime( "now", new DateTimeZone( "Asia/Dhaka"));
+  // // echo $NowDate ;
+
+  // $NowDateInString = strtotime($NowDate->format( 'Y-m-d'));
+  // // // echo $NowDateInString;
+  // // $NowTimeInString = strtotime($NowDate->format(' H:i'));
+  // // // echo $NowTimeInString;
+  // // $FixedTimeInStringForEvening = strtotime(' 17:00');
+  // // echo $FixedTimeInStringForEvening;
+
+
+
+  $success = false;
+  $duplicate = false;
+  $Error = false;
+
+    // Problems Submit //
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  include 'partials/_dbconnect.php';
+
+    $name = $_POST['name'];
+    $mobile = $_POST['mobile'];
+    $email = $_POST['email'];
+    $problem = $_POST['problem'];
+
+    $sql = "SELECT * FROM `problems` WHERE `email` = '$email' ";
+    $result = mysqli_query($conn, $sql);
+    $num = mysqli_num_rows($result);
+    if($num == 0){
+      $sql = "INSERT INTO `emailCollection` (`sno`, `name`,`email`,`date`) VALUES (NULL, '$name','$email',  current_timestamp());";
+      $result = mysqli_query($conn, $sql);
+      $sql = "INSERT INTO `problems` (`sno`, `name`, `mobile`, `email`, `problem`, `date`) VALUES (NULL, '$name', '$mobile', '$email', '$problem', current_timestamp());";
+      $result = mysqli_query($conn, $sql);
+      if($result){
+        $success = true;
+      }
+      else{
+        $Error = true;
+      }
+    }
+    elseif($num > 0){
+      $sql = "SELECT * FROM `problems` WHERE `name` LIKE '$name' AND `mobile` LIKE '$mobile' AND `email` LIKE '$email' AND `problem` LIKE '$problem' ";
+      $result = mysqli_query($conn, $sql);
+      $num = mysqli_num_rows($result);
+      if($num > 0){
+        $duplicate = true;
+      }
+      else{
+        $sql = "INSERT INTO `problems` (`sno`, `name`, `mobile`, `email`, `problem`, `date`) VALUES (NULL, '$name', '$mobile', '$email', '$problem', current_timestamp());";
+        $result = mysqli_query($conn, $sql);
+        if($result){
+          $success = true;
+        }
+        else{
+          $Error = true;
+        }
+      }
+    }
+    else{
+      $Error = true;
+    }
+  }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -7,7 +74,7 @@
     <title>Contact Us</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
@@ -21,224 +88,141 @@
     <!-- Header -->
     <?php require 'partials/_header.php'?>
 
+    <?php
+      if($success){
+        echo '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Success!</strong>Your query have been Updated!!!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            ';
+      }
+      if($duplicate){
+        echo '
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Error!</strong>You have already submitted!!!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            ';
+      }
+      if($Error){
+        echo '
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Error!</strong>We are having some tecnical issues please try again after some time if this problem still continues please email us directly!!!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            ';
+          }
+    ?>
+
     <!-- body -->
 
-    <div class="container">
-      <main>
-        <div class="text-center">
-          <h2>AGRO BD</h2>
-          <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form
-            group
-            has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+    <div class="" style="max-width: 1060px; margin-top: 70px; margin-left: auto; margin-right: auto;">
+      <div class="row d-flex justify-content-center" style="margin-bottom:79px;">
+        <h2 class="col-auto" style=" "> Contact Us</h2>
+        <hr />
+        <p class="col-auto">We would love to hear from you!</p>
+      </div>
+
+
+
+      <!-- Left Side -->
+      <div class="row">
+        <div class="col-6" style="">
+          <form action="" method="post">
+
+            <h3 class="h3 mb-3">For general queries</h3>
+            <h6 class="h6">We are happy to provide answers to any questions you have</h6>
+            <h6 class="mb-4"><span style="color: red">(We will contact within 24 hours)</span></h6>
+            <div class="mb-3">
+              <label for="name" class="form-label"><b>Your Name</b><span style="color: red"> *</span></label>
+              <input type="text" name="name" class="form-control" id="name" required placeholder="John Whick">
+            </div>
+
+            <div class="mb-3">
+              <label for="mobile" class="form-label"><b>Mobile Number</b><span style="color: red"> *</span></label>
+              <input name="mobile" type="text" class="form-control" id="mobile" required placeholder="01xxxxxxxxx"
+                onkeypress="return isNumberKey(event)" />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label"><b>Email address</b><span style="color: red"> *</span></label>
+              <input type="email" name="email" class="form-control" id="email" required placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="problem" class="form-label"><b>Your Query</b></label>
+              <textarea class="form-control" name="problem" id="problem" rows="3"
+                placeholder="Tell us about your project or query (Optional)"></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <div class="mb-3">
+              <input type="submit" name="Send" class="btn btn-success" id="Send" value=" Send "
+                style="display: grid;  width:100px; " />
+            </div>
+
+            <div class="mb-3 col-12" style="display: grid;">
+              <p style="color: rgb(155, 154, 154)">By clicking the button "Submit", you give your consent for collecting
+                of your personal information and
+                agree to the
+                <a href="#">privacy policy</a>.
+              </p>
+            </div>
+
+          </form>
         </div>
 
-        <div class="row g-5">
-          <div class="col-md-5 col-lg-4 order-md-last">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-              <span class="text-primary">Your cart</span>
-              <span class="badge bg-primary rounded-pill">3</span>
-            </h4>
-            <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Product name</h6>
-                  <small class="text-body-secondary">Brief description</small>
-                </div>
-                <span class="text-body-secondary">$12</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Second product</h6>
-                  <small class="text-body-secondary">Brief description</small>
-                </div>
-                <span class="text-body-secondary">$8</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                  <h6 class="my-0">Third item</h6>
-                  <small class="text-body-secondary">Brief description</small>
-                </div>
-                <span class="text-body-secondary">$5</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                <div class="text-success">
-                  <h6 class="my-0">Promo code</h6>
-                  <small>EXAMPLECODE</small>
-                </div>
-                <span class="text-success">−$5</span>
-              </li>
-              <li class="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
-                <strong>$20</strong>
-              </li>
-            </ul>
 
-            <form class="card p-2">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Promo code">
-                <button type="submit" class="btn btn-secondary">Redeem</button>
+
+        <!-- Right Side Form -->
+        <div class="col-6" style="">
+          <form action="" method="post"
+            style="max-width: 400px; margin-left: auto; margin-right: auto; margin-top: 120px;">
+
+            <div class="form-group mb-3">
+              <div>
+                <label><b>For general inquiries:</b></label>
               </div>
-            </form>
-          </div>
-          <div class="col-md-7 col-lg-8">
-            <h4 class="mb-3">Billing address</h4>
-            <form class="needs-validation" novalidate="">
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <label for="firstName" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-                  <div class="invalid-feedback">
-                    Valid first name is required.
-                  </div>
-                </div>
-
-                <div class="col-sm-6">
-                  <label for="lastName" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                  <div class="invalid-feedback">
-                    Valid last name is required.
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="username" class="form-label">Username</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
-                    <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                    <div class="invalid-feedback">
-                      Your username is required.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="email" class="form-label">Email <span
-                      class="text-body-secondary">(Optional)</span></label>
-                  <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                  <div class="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="address" class="form-label">Address</label>
-                  <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-                  <div class="invalid-feedback">
-                    Please enter your shipping address.
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label for="address2" class="form-label">Address 2 <span
-                      class="text-body-secondary">(Optional)</span></label>
-                  <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                </div>
-
-                <div class="col-md-5">
-                  <label for="country" class="form-label">Country</label>
-                  <select class="form-select" id="country" required="">
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid country.
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <label for="state" class="form-label">State</label>
-                  <select class="form-select" id="state" required="">
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please provide a valid state.
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <label for="zip" class="form-label">Zip</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Zip code required.
-                  </div>
-                </div>
+              <div>
+                <a href="mailto:info@agro-bd.com">info@agro-bd.com</a>
               </div>
-
-              <hr class="my-4">
-
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="same-address">
-                <label class="form-check-label" for="same-address">Shipping address is the same as my billing
-                  address</label>
+            </div>
+            <div class="form-group mb-3">
+              <div>
+                <label><b>Get in touch with our founders:</b></label>
               </div>
-
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="save-info">
-                <label class="form-check-label" for="save-info">Save this information for next time</label>
+              <div>
+                <a href="mailto:founders@agro-bd.com">founders@agro-bd.com</a>
               </div>
-
-              <hr class="my-4">
-
-              <h4 class="mb-3">Payment</h4>
-
-              <div class="my-3">
-                <div class="form-check">
-                  <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-                  <label class="form-check-label" for="credit">Credit card</label>
-                </div>
-                <div class="form-check">
-                  <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-                  <label class="form-check-label" for="debit">Debit card</label>
-                </div>
-                <div class="form-check">
-                  <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
-                  <label class="form-check-label" for="paypal">PayPal</label>
-                </div>
+            </div>
+            <div class="form-group mb-3">
+              <div>
+                <label><b>Career opportunities:</b></label>
               </div>
-
-              <div class="row gy-3">
-                <div class="col-md-6">
-                  <label for="cc-name" class="form-label">Name on card</label>
-                  <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                  <small class="text-body-secondary">Full name as displayed on card</small>
-                  <div class="invalid-feedback">
-                    Name on card is required
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="cc-number" class="form-label">Credit card number</label>
-                  <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Credit card number is required
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <label for="cc-expiration" class="form-label">Expiration</label>
-                  <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Expiration date required
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <label for="cc-cvv" class="form-label">CVV</label>
-                  <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-                  <div class="invalid-feedback">
-                    Security code required
-                  </div>
-                </div>
+              <div>
+                <a href="mailto:carear@agro-bd.com">carear@agro-bd.com</a>
               </div>
+            </div>
+            <div class="form-group mb-3">
+              <div>
+                <label><b>You can reach us on:</b></label>
+              </div>
+              <div>
+                <a href="mailto:+8801853-438156">+8801853-438156</a>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <p><b>Calling Hours: </b>Sat -Thurs, 10am-6pm <br>
+              <b>Address: </b>House - 8E, Road - 81, Gulshan 2, Dhaka 1212 <br>
+              <b>Visiting Hours: </b>Sun-Thurs, <br>
+              <span style="color: #686868">(appointment basis)</span></p>
+            </div>
 
-              <hr class="my-4">
-
-              <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-            </form>
-          </div>
+          </form>
         </div>
-      </main>
+
+
+      </div>
     </div>
 
     <!-- footer -->
@@ -256,10 +240,19 @@
         });
       });
     </script>
+    <script>
+      function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+        return true;
+      }
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
 
   </body>
+
 </html>

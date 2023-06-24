@@ -1,28 +1,4 @@
 
-<?php
-$showAlert = false;
-$showError = false;
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    include 'partials/_dbconnect.php';
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-    $exists=false;
-    if(($password == $cpassword) && $exists==false){
-        $sql = "INSERT INTO `users` ( `username`, `password`, `dt`) VALUES ('$username', '$password', current_timestamp())";
-        $result = mysqli_query($conn, $sql);
-        if ($result){
-            $showAlert = true;
-        }
-    }
-    else{
-        $showError = "Passwords do not match";
-    }
-}
-    
-?>
-
-
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Agro-Bd</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
@@ -43,27 +19,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <!-- css first -->
     <script>0</script>
 
-    
-      <?php
-    if($showAlert){
-    echo ' <div class="alert alert-primary alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> You are ready to login.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
-    }
-    if($showError){
-    echo ' <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> '. $showError.'
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div> ';
-    }
-    ?>
-    
     <!-- Header -->
     <?php require 'partials/_header.php' ?>
-   
+
     <!-- slider -->
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-indicators">
@@ -233,8 +191,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               for
               ensuring long-term agricultural success. This blog post dives deep into the realm of sustainable farming,
               providing a comprehensive guide that covers various aspects of this innovative approach.</p>
+<<<<<<< HEAD
+
+            <button type="button" class="btn btn-outline-success lead mb-0"><a href="market.php"
+                class="text-white fw-bold">Continue reading...</a></button>
+=======
             
             
+>>>>>>> ff25d23d08b47260b481d0e3c73005795a787ff5
           </div>
           <div class="col-md-6 px-0">
             <img src="big_card.jpg" alt="Image description" class="img-fluid" style="height: 400px;">
@@ -244,7 +208,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     </div>
 
-    
+
 
     <!-- footer -->
     <?php require 'partials/_footer.php'?>
