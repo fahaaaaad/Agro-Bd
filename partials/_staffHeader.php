@@ -72,29 +72,33 @@ require 'partials/_user.php';
               <a class="nav-link" aria-current="page" href="blogEntry.php">Blog</a>
             </li>
 
-            <div class="menu-bar" style="padding-left: -15px;">
-              <ul>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#">Our Products</a>
-                  <div class="dropdown-menu">
-                    <ul>
-                      <li><a href="animalFeedEntry.php">Animal Feed</a><li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a href="fishFeedEntry.php">Fish Feed</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a href="poultryFeedEntry.php">Poultry Feed</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="animalFeedEntry.php">Product</a>
+            </li>
 
             ';
+            // <div class="menu-bar" style="padding-left: -15px;">
+            //   <ul>
+            //     <li class="nav-item dropdown">
+            //       <a class="nav-link dropdown-toggle" href="#">Our Products</a>
+            //       <div class="dropdown-menu">
+            //         <ul>
+            //           <li><a href="animalFeedEntry.php">Animal Feed</a><li>
+            //           <li>
+            //             <hr class="dropdown-divider">
+            //           </li>
+            //           <li><a href="fishFeedEntry.php">Fish Feed</a></li>
+            //           <li>
+            //             <hr class="dropdown-divider">
+            //           </li>
+            //           <li><a href="poultryFeedEntry.php">Poultry Feed</a></li>
+            //         </ul>
+            //       </div>
+            //     </li>
+            //   </ul>
+            // </div>
+
+
           }
           echo '
           </ul>

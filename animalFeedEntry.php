@@ -124,10 +124,11 @@
 
 
           <div class="form-group row mt-2 mb-2">
-            <label for="type" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Type:</label>
+            <label for="type" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Product Type: <span style="color: red">*</span></label>
             <div class="col-sm-9">
-              <select class="form-select" id="type" name="type" aria-label="Floating label select example">
-                <option selected>Select type</option>
+              <select class="form-select" id="type" name="type" aria-label="Floating label select example" required>
+                <!-- <option selected>Select product type</option> -->
+                  <option value="">Select type</option>
                   <option value="cattleFeed">Cattle Feed</option>
                   <option value="poultryFeed">Poultry Feed</option>
                   <option value="fishFeed">Fish Feed</option>
