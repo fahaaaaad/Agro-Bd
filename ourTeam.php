@@ -71,7 +71,7 @@
       <div class="col-lg-6 mx-auto">
         <p class="fs-5 mb-4">Join our dynamic team and embark on an exciting career journey. We value our people and foster an inclusive and collaborative work environment. Work on cutting-edge projects alongside industry experts, making a meaningful impact. Whether you're an experienced professional or starting your career, we offer diverse opportunities to unleash your full potential. Join us in shaping the future of our industry, driving innovation and success. Experience a supportive and growth-oriented culture that encourages creativity and embraces new ideas. Together, let's make a difference and achieve remarkable success.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">View Careers</button>
+          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold"><a href="contact.php">Contact us</a></button>
          
         </div>
       </div>
