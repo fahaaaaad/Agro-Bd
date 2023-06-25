@@ -191,14 +191,6 @@
               for
               ensuring long-term agricultural success. This blog post dives deep into the realm of sustainable farming,
               providing a comprehensive guide that covers various aspects of this innovative approach.</p>
-<<<<<<< HEAD
-
-            <button type="button" class="btn btn-outline-success lead mb-0"><a href="market.php"
-                class="text-white fw-bold">Continue reading...</a></button>
-=======
-            
-            
->>>>>>> ff25d23d08b47260b481d0e3c73005795a787ff5
           </div>
           <div class="col-md-6 px-0">
             <img src="big_card.jpg" alt="Image description" class="img-fluid" style="height: 400px;">

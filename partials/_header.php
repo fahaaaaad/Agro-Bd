@@ -80,6 +80,10 @@
           <a class="nav-link" aria-current="page" href="ourTeam.php">About Us</a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="blog.php">Blog</a>
+        </li>
+
 
 
         <!-- Latest News -->

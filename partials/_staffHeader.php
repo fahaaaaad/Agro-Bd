@@ -67,6 +67,10 @@ require 'partials/_user.php';
                 </li>
               </ul>
             </div>
+              <!-- Home -->
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+        </li>
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="blogEntry.php">Blog</a>
