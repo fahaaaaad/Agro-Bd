@@ -60,7 +60,7 @@
         <div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
           <div class='card shadow-sm'>
 
-            <img class='bd-placeholder-img card-img-top' width='100%' height='225' src= 'uploads/".$row['image']."'> 
+            <img class='bd-placeholder-img card-img-top' width='100%' height='225' src= uploads/".$row['image']."'> 
             
             <div class='card-body'>
               <p class='card-text'>" . $row['name'] . "</p>
