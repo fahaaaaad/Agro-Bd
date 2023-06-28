@@ -3,12 +3,12 @@
 </div> -->
 
 <?php
-  if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(isset($_POST['checked'])){
-      // $value = 'ok';
-      // echo $value ;
-    }
+  
+  if(isset($_POST['mark'])){
+    $markValue = $_POST['mark'];
+    echo $markValue;
   }
+
 ?>
 
 <!doctype html>
@@ -76,9 +76,10 @@
             $result = mysqli_query($conn,$sql);
             // $num = mysqli_num_rows($result);
             $sn = 0;
+            // $tr = 0;
             while($row = mysqli_fetch_assoc($result)){
               $sn = $sn + 1;
-              echo "<tr>
+              echo "<tr class='table-row-marked'>
                       <td>". $sn. "</td>
                       <td>". $row['email']. "</td>
                       <td>". $row['date']. "</td>
@@ -86,7 +87,9 @@
                       <td>". $row['mobile']. "</td>
                       <td><textarea rows='3' cols='20' name='usrtxt' wrap='hard' style='width: 100%; background: inherit;'>". $row['problem']. "</textarea></td>
                       <td><a href='mailto:".$row['email']."'><button class='btn btn-success' type='button' value='Input'>Reply</button></a></td>
-                      <td><button class='btn btn-primary' type='button' value='Input'>Marked</button></td>
+                      <td>
+                        <button class='btn btn-primary' type='button' value='mark' onclick='checkboxcolorrow(this)'>Marked</button>
+                      </td>
                     </tr>";
             }
           ?>
@@ -96,10 +99,51 @@
       </div>
     </div>
 
+                        <!-- if(isset($_POST['mark'])){
+                          if($row['mobile'] == 'unmarked'){
+                            $sql = "UPDATE `problems` SET `marked` = `marked` WHERE `date` = '$row['date']'";
+                            $result = mysqli_query($conn,$sql);
+                          }
+                          elseif($row['mobile'] == 'marked'){
+                            $sql = "UPDATE `problems` SET `marked`= 'unmarked' WHERE `date` = '$row['date']'";
+                            $result = mysqli_query($conn,$sql);
+                          }
+                        }
+                        echo"
+                          <form action='' method='post'>
+                            <input type='submit' name='mark' class='btn btn-success' id='mark' value='Mark' style='width:90px;' />
+                          </form>
+                        ";?> -->
+                        <?php
+                          // echo"
+                          //   <form action='' method='post'>
+                          //     <input type='submit' name='mark' class='btn btn-success' id='mark' value='Mark' style='width:90px;' />
+                          //   </form>";
+                            ?>
+
+
     <!-- footer -->
     <?php require 'partials/_footer.php'?>
 
+<!-- <button class='btn btn-primary' type='button' value='mark'>Marked</button> -->
+<?php
+  // if(isset($_POST['mark'])){
+  //   if($row['mobile'] == 'unmarked'){
+  //     $sql = "UPDATE `problems` SET `marked`= 'marked' WHERE `date` = '$row['date']'";
+  //     $result = mysqli_query($conn,$sql);
+  //   }
+  //   elseif($row['mobile'] == 'marked'){
+  //     $sql = "UPDATE `problems` SET `marked`= 'unmarked' WHERE `date` = '$row['date']'";
+  //     $result = mysqli_query($conn,$sql);
+  //   }
+  // }
+  // echo"
+  //   <form action='' method='post'>
+  //     <input type='submit' name='mark' class='btn btn-success' id='mark' value='Mark' style='width:90px;' />
+  //   </form>
+  // ";
 
+?>
 
     <script>
       // Start carousel and set auto-cycle interval
@@ -136,6 +180,38 @@
         }
       });
     </script>
+
+<!-- <script>
+  let buttons = document.querySelectorAll(".btn");
+  for(let i = 0; <buttons.length; i++) {
+    buttons[i].addEventListener("click",function(){
+      alert(this.innertext + "clicked");
+    });
+  }
+</script> -->
+    <!-- <script>
+      function checkboxcolorrow(result) {
+        if (result.Done) {
+          result.parentNode.parentNode.style.backgroundColor = "#a4ffff4d";
+          result.parentNode.parentNode.style.color = "black";
+        }
+        else {
+          result.parentNode.parentNode.style.backgroundColor = "";
+          result.parentNode.parentNode.style.color = "";
+        }
+      }
+    </script> -->
+
+<!-- <script>
+
+var elements = document.getElementsByClassName('table-row-marked');
+
+// Iterate over the elements and change their color
+for (var i = 0; i < elements.length; i++) {
+  elements[i].style.backgroundColor = 'red'; // Change the color to your desired value
+}
+
+</script> -->
 
     <!-- <script>
     $(document).on('click', '#data td', function(e) {
