@@ -47,10 +47,14 @@ a {
 .contact-us {
   width: 30%;
 }
+.company-info {
+  width: 10%;
+}
 .footer-item {
   display: flex;
   flex-direction: column;
   font-size: 15px;
+  font-size: 18px;
 }
 .app-links-container {
   width: 20%;
@@ -62,4 +66,5 @@ a {
   color: #cfcece;
   font-size: 15px;
   text-align: center;
+  margin-top: -20px;
 }
