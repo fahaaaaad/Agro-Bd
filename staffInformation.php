@@ -19,6 +19,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
+
+    <!-- <style>
+      a:hover {
+        color: white;
+      }
+    </style> -->
+
   </head>
 
   <body>
