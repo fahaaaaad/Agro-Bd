@@ -67,40 +67,36 @@ require 'partials/_user.php';
                 </li>
               </ul>
             </div>
-              <!-- Home -->
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-        </li>
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="blogEntry.php">Blog</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="animalFeedEntry.php">Product</a>
-            </li>
-
+            <div class="menu-bar" style="padding-left: -15px;">
+              <ul>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#">Products</a>
+                  <div class="dropdown-menu">
+                    <ul>
+                      <li><a href="cattleFeedTable.php">Cattle</a><li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a href="fishFeedTable.php">Fish</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a href="poultryFeedTable.php">Poultry</a></li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li><a href="animalFeedEntry.php">Product Entry</a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
             ';
-            // <div class="menu-bar" style="padding-left: -15px;">
-            //   <ul>
-            //     <li class="nav-item dropdown">
-            //       <a class="nav-link dropdown-toggle" href="#">Our Products</a>
-            //       <div class="dropdown-menu">
-            //         <ul>
-            //           <li><a href="animalFeedEntry.php">Animal Feed</a><li>
-            //           <li>
-            //             <hr class="dropdown-divider">
-            //           </li>
-            //           <li><a href="fishFeedEntry.php">Fish Feed</a></li>
-            //           <li>
-            //             <hr class="dropdown-divider">
-            //           </li>
-            //           <li><a href="poultryFeedEntry.php">Poultry Feed</a></li>
-            //         </ul>
-            //       </div>
-            //     </li>
-            //   </ul>
-            // </div>
 
 
           }
@@ -163,8 +159,9 @@ require 'partials/_user.php';
 
 
           echo '
-            <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark" data-bs-target="#Loginmodal2">
-              <a href="/AgroBDc/Agro-Bd-1/partials/_logout.php">Log out</a></button>
+            <button type="button" class="btn btn-outline-danger">
+              <a href="/AgroBDc/Agro-Bd-1/partials/_logout.php" style="a:hover {color: white;};">Log out</a>
+            </button>
             <button type="button" class="btn btn-secondary">En</button>
             <button type="button" class="btn btn-success">Bd</button>
           </div>

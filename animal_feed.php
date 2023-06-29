@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Animal Feed</title>
+    <title>Poultry Feed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
@@ -30,12 +30,12 @@
     <div class="container my-5 text-center"> <!-- Added text-center class -->
       <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
         <h1 class="section-header landing-section-title title-font">
-          Cattle Feeds
+          Cattle Feeds 
         </h1>
 
         <div class="landing-section-content">
-          <div>Unlock the potential of your cattle farm with our comprehensive range of high-quality feeds for efficient and profitable farming. </div>
-          <div>Grow your cattles operation with top-quality feeds tailored for success.</div>
+          <div>Unlock the potential of your Cattle farm with our comprehensive range of high-quality feeds for efficient and profitable farming. </div>
+          <div>Grow your cattles with top-quality feeds tailored for success.</div>
         </div>
       </div>
     </div>
@@ -56,12 +56,9 @@
       echo "
         <div class='w-100'></div>";
     }
-      echo "
-        <div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
+    echo "<div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
           <div class='card shadow-sm'>
-
-            <img class='bd-placeholder-img card-img-top' width='100%' height='225' src= uploads/".$row['image']."'> 
-            
+            <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
             <div class='card-body'>
               <p class='card-text'>" . $row['name'] . "</p>
               <p class='card-text'>Price:"  . $row['price'] . "Tk</p>
@@ -73,14 +70,12 @@
               </div>
             </div>
           </div>
-        </div>
-      ";
+        </div>";
   }
 
   mysqli_close($conn);
-  // echo'src="uploads/<?php echo $row['photo']"';
   ?>
-  </div>
+</div>
 </div>
 
 
@@ -297,13 +292,6 @@
 
 
 
-
-
- 
-   
-
-
-
  <!-- footer -->
     <?php require 'partials/_footer.php'?>
 
@@ -311,3 +299,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </body>
 </html>
+   

@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       $update = true;
     }
     else{
-      echo "Failed to Updated record successfully! <br>";
+      echo "Failed to Update record successfully! <br>";
     }
   }
 }
@@ -63,6 +63,9 @@ if(isset($_GET['delete'])){
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
+    
+
+
   </head>
 
   <body>
@@ -218,7 +221,7 @@ if(isset($_GET['delete'])){
         element.addEventListener("click", (e) => {
           console.log("edit ");
           username = e.target.id.substr(1);
-          if(confirm("Are you sure you want to remove this booking!")){
+          if(confirm("Are you sure you want to remove this entry!")){
             console.log("yes");
             window.location = `staffPasswordChange.php?delete=${username}`;
           }

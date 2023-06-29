@@ -2,6 +2,7 @@
 
   // $usernameExists = false; 
   $enter = false;
+  $productExists = false; 
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     include 'partials/_dbconnect.php';
@@ -16,7 +17,7 @@
       $photo_tmp_name = $_FILES['photo']['tmp_name'];
       $photo_size = $_FILES['photo']['size'];
       $photo_new_name = rand() . $photo_name;
-      echo $photo_name;
+      // echo $photo_name;
       if($photo_size > 5242880){
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Error!</strong> photo is very big! Maximum size is 5MB.
@@ -26,15 +27,23 @@
               </div>';
       }
       else{
-        $sql = "INSERT INTO `$type` (`sno`, `name`, `image`, `price`) VALUES (NULL, '$productName', '$photo_new_name', '$price')";
+        $sql = "SELECT * FROM `$type` WHERE `name` LIKE '$productName' ";
         $result = mysqli_query($conn, $sql);
-        if($result){
-          $enter = true;
-          $showAlert = true;
-          move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
+        $num = mysqli_num_rows($result);
+        if($num > 0){
+          $productExists = true; 
         }
         else{
-          echo "Failed to Updated record successfully! refresh the page (F5) and try again.<br>";
+          $sql = "INSERT INTO `$type` (`sno`, `name`, `image`, `price`) VALUES (NULL, '$productName', '$photo_new_name', '$price')";
+          $result = mysqli_query($conn, $sql);
+          if($result){
+            $enter = true;
+            // $showAlert = true;
+            move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
+          }
+          else{
+            echo "Failed to Updated record successfully! refresh the page (F5) and try again.<br>";
+          }
         }
       }
     }
@@ -65,6 +74,8 @@
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
     <link rel="stylesheet" href="css/MyInformation.css" />
 
+
+
     <style>
       .body {
         display: flex;
@@ -93,6 +104,7 @@
     <!-- Header -->
     <?php require 'partials/_staffHeader.php'?>
 
+    <!-- Alerts -->
     <?php
 
       if($enter){
@@ -102,6 +114,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           ';
+      }
+
+      if($productExists){
+        echo '
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> Product name already exists!!!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            ';
       }
 
     ?>
@@ -156,7 +177,7 @@
             <label for="photo" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Photo: <span style="color: red">*</span></label>
             <div class="col-sm-9">
               <!-- <img src="uploads/<?php //echo $row['photo'];?>" alt=""> -->
-              <input type="file" accept="image/*" name="photo" class="form-control" id="photo" value=""/>
+              <input type="file" accept="image/*" name="photo" class="form-control" id="photo" required/>
             </div>
           </div>
 
