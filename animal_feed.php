@@ -1,4 +1,6 @@
 <?php
+
+
 include 'partials/_dbconnect.php';
 session_start();
 
@@ -39,20 +41,20 @@ if (isset($_POST['add_to_cart'])) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   include 'partials/_dbconnect.php';
-
+  if(isset($_POST['submit'])){
     // Retrieve order form data
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
-
+  
     // Retrieve product information
     $productNames = $_POST['product_name'];
     $productPrices = $_POST['product_price'];
     $productQuantities = $_POST['product_quantity'];
-
-
-// Validate required fields
+  
+  
+  // Validate required fields
     if (!empty($name) && !empty($email) && !empty($phone) && !empty($address) && !empty($productNames) && !empty($productPrices) && !empty($productQuantities)) {
         // Insert order information into the database
         $sql = "INSERT INTO orders (name, email, phone, address, product_name, product_price, product_quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -83,6 +85,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Required fields are missing, handle the error as desired
         // You can set an error message or perform any necessary actions
     }
+
+  }
+
 
 }
 
@@ -493,7 +498,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <div class="col-md-7">
     <!-- Order form -->
     <h4 class="mb-3">Order Form</h4>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+    <form method="post" action="">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name" class="form-control" required>
@@ -504,7 +509,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="tel" name="phone" id="phone" class="form-control" required>
+            <input type="tel" name="phone" id="phone" class="form-control" onkeypress="return isNumberKey(event)" required>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
@@ -517,8 +522,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="hidden" name="product_quantity[]" value="<?php echo $value['quantity']; ?>">
         <?php endforeach; ?>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+        <input type="submit" name="submit" value="submit" class="btn btn-success" style="float:right; margin-right:30px; margin-bottom:120px; width:100px;" >
+
     </form>
+
+
+
+
+
 </div>
 
     </div>
