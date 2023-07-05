@@ -1,3 +1,41 @@
+<?php
+include 'partials/_dbconnect.php';
+session_start();
+
+if (isset($_POST['add_to_cart'])) {
+    if (isset($_SESSION['cart'])) {
+        // The cart is already set, perform necessary operations
+    } else {
+      
+        // Add the item to the cart
+        $session_array = array(
+            'id' => $_GET['id'],
+            'name' => $_POST['name'],
+            'price' => $_POST['price'],
+            'quantity' => $_POST['quantity']
+        );
+
+        $_SESSION['cart'][] = $session_array;
+    }
+}
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -57,6 +95,7 @@
         <div class='w-100'></div>";
     }
     echo "<div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
+         <form method='post' action=''>
           <div class='card shadow-sm'>
             <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
             <div class='card-body'>
@@ -64,12 +103,13 @@
               <p class='card-text'>Price:"  . $row['price'] . "Tk</p>
               <div class='d-flex justify-content-between align-items-center'>
                 <div class='btn-group'>
-                  <button type='button' class='btn btn-sm btn-outline-secondary'>Add To Cart</button>
-                  <button type='button' class='btn btn-sm btn-outline-secondary'>Quantity</button>
+                <input type='number' name= 'quantity' value='1' class='form-control'>
+                  <input type='submit' name = 'add_to_cart' class='btn btn-sm btn-outline-secondary' value='Add To Cart'>
+                  
                 </div>
               </div>
             </div>
-          </div>
+          </div></form>
         </div>";
   }
 
@@ -85,49 +125,16 @@
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+          
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">−$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
+        <?php
+        
+      var_dump($_SESSION['cart']);
+        
+        ?>
 
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </form>
+
+      
       </div>
       <div class="container my-5 text-center">
         <h1 class="section-header landing-section-title title-font">
