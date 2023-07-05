@@ -38,6 +38,11 @@ require 'partials/_user.php';
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="queries.php">Queries</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="orders.php">Orders</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="emailCollection.php">Emails</a>
             </li>';
