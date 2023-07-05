@@ -1,3 +1,53 @@
+<?php
+include 'partials/_dbconnect.php';
+session_start();
+
+if (isset($_POST['add_to_cart'])) {
+    if (isset($_SESSION['cart'])) {
+
+      $session_array_id = array_column($_SESSION['cart'],"id");
+
+    if(!in_array($_POST['id'],$session_array_id)){
+
+         // Add the item to the cart
+        $session_array = array(
+            'id' => $_POST['id'],
+            'name' => $_POST['product_name'],
+            'price' => $_POST['product_price'],
+            'quantity' => $_POST['quantity']
+        );
+
+        $_SESSION['cart'][] = $session_array;
+
+    }
+
+
+
+    } else {
+        // Add the item to the cart
+        $session_array = array(
+            'id' => $_POST['id'],
+            'name' => $_POST['product_name'],
+            'price' => $_POST['product_price'],
+            'quantity' => $_POST['quantity']
+        );
+
+        $_SESSION['cart'][] = $session_array;
+    }
+}
+// session_destroy();
+
+
+?>
+
+
+
+
+
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -58,19 +108,26 @@
     }
 
     echo "<div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
-          <div class='card shadow-sm'>
+    <form method='post' action=''>
+      <div class='card shadow-sm'>
             <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
             <div class='card-body'>
               <p class='card-text'>" . $row['name'] . "</p>
               <p class='card-text'>Price:"  . $row['price'] . "Tk</p>
               <div class='d-flex justify-content-between align-items-center'>
                 <div class='btn-group'>
-                  <button type='button' class='btn btn-sm btn-outline-secondary'>Add To Cart</button>
-                  <button type='button' class='btn btn-sm btn-outline-secondary'>Quantity</button>
+                  <input type='hidden' name='product_name' value=" . $row['name'] . ">
+                <input type='hidden' name='product_price' value=" . $row['price'] . ">
+                <input type='hidden' name='id' value=" . $row['sno'] . ">
+                <input type='number' name= 'quantity' value='1' class='form-control'>
+                  <input type='submit' name = 'add_to_cart' class='btn btn-sm btn-outline-secondary' value='Add To Cart'>
                 </div>
               </div>
             </div>
           </div>
+
+    </form>
+      
         </div>";
   }
 
@@ -86,49 +143,67 @@
       <div class="col-md-5 col-lg-4 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
-          <span class="badge bg-primary rounded-pill">3</span>
+         
         </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Third item</h6>
-              <small class="text-body-secondary">Brief description</small>
-            </div>
-            <span class="text-body-secondary">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">−$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (USD)</span>
-            <strong>$20</strong>
-          </li>
-        </ul>
 
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </form>
+          <?php
+    $output = " ";
+    $output .= "<table class='table table-bordered table-striped'>
+                  <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                    <th>Item Quantity</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                  </tr>";
+
+    $total_price = 0;
+
+    if (!empty($_SESSION['cart'])) {
+      foreach ($_SESSION['cart'] as $key => $value) {
+        $item_price = $value['price'] * $value['quantity'];
+        $total_price += $item_price;
+        $output .= "<tr>
+                      <td>" . $value['id'] . "</td>
+                      <td>" . $value['name'] . "</td>
+                      <td>" . $value['price'] . "Tk</td>
+                      <td>" . $value['quantity'] . "</td>
+                      <td>Tk" . number_format($item_price) . "</td>
+                      <td>
+                        <form method='post' action=''>
+                          <input type='hidden' name='id' value='" . $value['id'] . "'>
+                          <button type='submit' name='remove_from_cart' class='btn btn-sm btn-outline-danger'>Remove</button>
+                        </form>
+                      </td>
+                    </tr>";
+      }
+    } else {
+      $output .= "<tr><td colspan='6'>Your cart is empty.</td></tr>";
+    }
+
+    $output .= "<tr>
+                  <td colspan='4' class='text-end'><strong>Total:</strong></td>
+                  <td colspan='2'>Tk" . number_format($total_price) . "</td>
+                </tr>";
+    
+    $output .= "</table>";
+    echo $output;
+
+    // Process the form submission
+    if (isset($_POST['remove_from_cart'])) {
+      $remove_id = $_POST['id'];
+      if (array_key_exists($remove_id, $_SESSION['cart'])) {
+        unset($_SESSION['cart'][$remove_id]);
+        // You can also add a success message here if needed
+        header("Location: your_cart_page.php"); // Redirect to the cart page after removing the item
+        exit; // Add this line to prevent further execution of the script
+      }
+    }
+    ?>
+        
+
+        
       </div>
       <div class="container my-5 text-center">
         <h1 class="section-header landing-section-title title-font">

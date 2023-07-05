@@ -88,7 +88,7 @@
           <!-- add to cart and buying info -->
           <div class="container my-5">
             <div class="row g-5" style="justify-content: center;">
-              <!-- <div class="col-md-5 col-lg-4 order-md-last">
+              <div class="col-md-5 col-lg-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                   <span class="text-primary">Your cart</span>
                   <span class="badge bg-primary rounded-pill">3</span>
@@ -134,7 +134,7 @@
                     <button type="submit" class="btn btn-secondary">Redeem</button>
                   </div>
                 </form>
-              </div> -->
+              </div>
               <div class="container my-5 text-center">
                 <h1 class="section-header landing-section-title title-font">
                   Billing address
