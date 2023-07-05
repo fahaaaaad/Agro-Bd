@@ -37,6 +37,54 @@ if (isset($_POST['add_to_cart'])) {
 }
 // session_destroy();
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+  include 'partials/_dbconnect.php';
+
+    // Retrieve order form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+
+    // Retrieve product information
+    $productNames = $_POST['product_name'];
+    $productPrices = $_POST['product_price'];
+    $productQuantities = $_POST['product_quantity'];
+
+
+// Validate required fields
+    if (!empty($name) && !empty($email) && !empty($phone) && !empty($address) && !empty($productNames) && !empty($productPrices) && !empty($productQuantities)) {
+        // Insert order information into the database
+        $sql = "INSERT INTO orders (name, email, phone, address, product_name, product_price, product_quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        
+        if ($stmt) {
+            // Bind parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "ssssssd", $name, $email, $phone, $address, $productName, $productPrice, $productQuantity);
+            
+            // Loop through the product information and execute the prepared statement
+            for ($i = 0; $i < count($productNames); $i++) {
+                $productName = $productNames[$i];
+                $productPrice = $productPrices[$i];
+                $productQuantity = $productQuantities[$i];
+                
+                mysqli_stmt_execute($stmt);
+            }
+            
+            mysqli_stmt_close($stmt);
+        }
+        
+        // Clear form values after submission
+        $name = $email = $phone = $address = '';
+        
+        // Clear the cart after successful submission if desired
+        $_SESSION['cart'] = array();
+    } else {
+        // Required fields are missing, handle the error as desired
+        // You can set an error message or perform any necessary actions
+    }
+
+}
 
 ?>
 
@@ -143,8 +191,8 @@ if (isset($_POST['add_to_cart'])) {
 
 <!-- add to cart and buying info -->
 <div class="container my-5">
-  <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
+  <div class="row ">
+      <div class="col-md-5 order-md-last">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Your cart</span>
           
@@ -174,10 +222,7 @@ if (isset($_POST['add_to_cart'])) {
                       <td>" . $value['quantity'] . "</td>
                       <td>Tk" . number_format($item_price) . "</td>
                       <td>
-                        <form method='post' action=''>
-                          <input type='hidden' name='id' value='" . $value['id'] . "'>
-                          <button type='submit' name='remove_from_cart' class='btn btn-sm btn-outline-danger'>Remove</button>
-                        </form>
+                        <a href='animal_feed.php?action=remove&id=".$value['id']."' class='btn btn-sm btn-outline-danger btn-block'>Remove</a>
                       </td>
                     </tr>";
       }
@@ -193,21 +238,76 @@ if (isset($_POST['add_to_cart'])) {
     $output .= "</table>";
     echo $output;
 
-    // Process the form submission
-    if (isset($_POST['remove_from_cart'])) {
-      $remove_id = $_POST['id'];
-      if (array_key_exists($remove_id, $_SESSION['cart'])) {
-        unset($_SESSION['cart'][$remove_id]);
-        // You can also add a success message here if needed
-        header("Location: your_cart_page.php"); // Redirect to the cart page after removing the item
-        exit; // Add this line to prevent further execution of the script
+
+
+    if(isset($_GET['action'])){
+      if($_GET['action'] == "remove"){
+        foreach ($_SESSION['cart'] as $key => $value) {
+          if($value['id'] == $_GET['id']){
+            unset($_SESSION['cart'][$key]);
+          }
+        }
       }
     }
-    ?>
 
+
+// <a href='animal_feed.php?action=remove&id=".$value['id']."' class='btn btn-sm btn-outline-danger btn-block'>Remove</a>
+                          // <a href='animal_feed.php?action=remove&id=".$value['id']."'>
+                          //   <button class='btn btn-sm btn-outline-danger btn-block'>Remove</button>
+                          // </a>
+
+                        // <form method='post' action=''>
+                        //   <input type='hidden' name='id' value='" . $value['id'] . "'>
+                        //   <button type='submit' name='remove_from_cart' class='btn btn-sm btn-outline-danger' id=d". $value['name'].">Remove</button>
+                        // </form>
+
+    // Process the form submission
+    // if (isset($_GET['remove_from_cart'])) {
+    //   $remove_id = $_GET['id'];
+    //   if (array_key_exists($remove_id, $_SESSION['cart'])) {
+    //     unset($_SESSION['cart'][$remove_id]);
+    //     // You can also add a success message here if needed
+    //     header("Location: your_cart_page.php"); // Redirect to the cart page after removing the item
+    //     exit; // Add this line to prevent further execution of the script
+    //   }
+    // }
+
+//  Removing Data from the DataBase
+// if(isset($_GET['delete'])){
+//   $remove_id = $_GET['delete'];
+//     if (array_key_exists($remove_id, $_SESSION['cart'])) {
+//       unset($_SESSION['cart'][$remove_id]);
+//       // You can also add a success message here if needed
+//       header("Location: your_cart_page.php"); // Redirect to the cart page after removing the item
+//       exit; // Add this line to prevent further execution of the script
+//     }
+
+
+
+
+
+
+  // $sql = "DELETE FROM `myinformation` WHERE `username` = '$username'";
+  // $result = mysqli_query($conn, $sql);
+
+  // $sql = "DELETE FROM `login` WHERE `username` = '$username'";
+  // $result = mysqli_query($conn, $sql);
+  // if($result){
+  //   $delete = true;
+  // }
+// }
+
+    ?>
       
       </div>
-      <div class="container my-5 text-center">
+
+
+
+
+
+
+
+      <!-- <div class="container my-5 text-center">
         <h1 class="section-header landing-section-title title-font">
           Billing address
         </h1>
@@ -364,17 +464,115 @@ if (isset($_POST['add_to_cart'])) {
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
         </form>
-      </div>
+      </div> -->
+
+      <!-- Order form -->
+            <!-- <div class="col-md-7">
+                <h4 class="mb-3">Order Form</h4>
+                <form method="post" action="<?php //echo $_SERVER['PHP_SELF']; ?>">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="tel" name="phone" id="phone" class="form-control" onkeypress="return isNumberKey(event)" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea name="address" id="address" class="form-control" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div> -->
+
+<div class="col-md-7">
+    <!-- Order form -->
+    <h4 class="mb-3">Order Form</h4>
+    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" name="phone" id="phone" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea name="address" id="address" class="form-control" rows="4" required></textarea>
+        </div>
+
+        <?php foreach ($_SESSION['cart'] as $key => $value) : ?>
+            <input type="hidden" name="product_name[]" value="<?php echo $value['name']; ?>">
+            <input type="hidden" name="product_price[]" value="<?php echo $value['price']; ?>">
+            <input type="hidden" name="product_quantity[]" value="<?php echo $value['quantity']; ?>">
+        <?php endforeach; ?>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
     </div>
 </div>
 
 
 
- <!-- footer -->
+    <!-- footer -->
     <?php require 'partials/_footer.php'?>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <script>
+
+      // deletes = document.getElementsByClassName('delete');
+      // Array.from(deletes).forEach((element)=>{
+      //   element.addEventListener("click", (e) => {
+      //     console.log("edit ");
+      //     name = e.target.id.substr(1);
+      //     if(confirm("Are you sure you want to remove this entry!")){
+      //       console.log("yes");
+      //       window.location = `animal_feed.php?delete=${name}`;
+      //     }
+      //     else{
+      //       console.log("no");
+      //     }
+      //   })
+      // })
+
+    </script>
+
+    <script>
+      function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+          return false;
+        return true;
+      }
+    </script>
+
   </body>
 </html>
-   
+
+<?php
+
+// if (isset($_GET['action'])) {
+//     if ($_GET['action'] == "remove") {
+//         foreach ($_SESSION['cart'] as $key => $value) {
+//             if ($value['id'] == $_GET['id']) {
+//                 unset($_SESSION['cart'][$key]);
+//             }
+//         }
+//     }
+// }
+
+?>
