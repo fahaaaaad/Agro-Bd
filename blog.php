@@ -20,13 +20,7 @@
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/headerNestedDropdown.css" />
 
-  <style>
-    .bg-image {
-      background-image: url("images/5104194.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-  </style>
+  
 </head>
 
 <body>
@@ -37,82 +31,80 @@
   <?php require 'partials/_header.php'?>
 
   <!-- body -->
+  <div class="container my-5 text-center"> <!-- Added text-center class -->
+      <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
+        <h1 class="section-header landing-section-title title-font">
+          Our Blog
+        </h1>
+        <div class="landing-section-content my-2">
+          <div>Explore our latest articles and stay up-to-date with our informative blog posts.</div>
+          
+        </div>
+       
 
-  <div class="px-4 py-3 text-center bg-image">
-    <h1 class="display fw-bold text-body-emphasis">Our Blog</h1>
-    <div class="row" style="justify-content: center;">
-      <?php
-        include 'partials/_dbconnect.php';
-
-        $sql = "SELECT * FROM `blog`";
-        $result = mysqli_query($conn, $sql);
-        $sno = 0;
-
-        while ($row = mysqli_fetch_assoc($result)) {
-          $sno = $sno + 1;
-          if ($sno % 5 == 1) {
-            echo "<div class='w-100'></div>";
-          }
-            echo "<div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
-                    <div class='card shadow-sm'>
-                        <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
-                        <div class='card-body'>
-                            <p class='card-text'>" . $row['name'] . "</p>
-
-                            <div class='d-flex justify-content-between align-items-center'>
-                                                            <div class='d-flex justify-content-between align-items-center'>
-                                <div class='btn-group'>
-                                    <button type='button' class='btn btn-sm btn-outline-secondary view-more'>View more</button>
-                                </div>
-                            </div>
-                            <div class='see-less d-none'>
-                                <p class='card-text'>"  . $row['stories'] . "</p>
-                                <button type='button' class='btn btn-sm btn-outline-secondary see-less-btn'>See less</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              </div>";
-        }
-        mysqli_close($conn);
-      ?>
+        
+      </div>
     </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <?php
+      include 'partials/_dbconnect.php';
+
+      $sql = "SELECT * FROM `blog`";
+      $result = mysqli_query($conn, $sql);
+      $sno = 0;
+
+      while ($row = mysqli_fetch_assoc($result)) {
+        $sno = $sno + 1;
+        if ($sno % 5 == 1) {
+          echo "<div class='w-100'></div>";
+        }
+        echo "<div class='col-lg-2 col-md-4 col-sm-1 mx-2 my-2'>
+          
+            <div class='card shadow-sm'>
+              <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
+                <p class='card-text'>" . $row['name'] . "</p>
+              <div class='card-body'>
+                
+                <div id='fullStory".$sno."' style='display: none;'>" . $row['stories'] . "</div>
+                <button class='btn btn-primary' onclick='showFullStory(".$sno.")' id='seeMoreBtn".$sno."'>See More</button>
+              </div>
+            </div>
+         
+        </div>";
+      }
+
+      
+
+
+  mysqli_close($conn);
+  ?>
+
   </div>
+</div>
 
   <!-- footer -->
-  <?php require 'partials/_footer.php'?>
+    <?php require 'partials/_footer.php'?>
+    <script>
+    function showFullStory(sno) {
+      var fullStoryDiv = document.getElementById('fullStory' + sno);
+      var seeMoreBtn = document.getElementById('seeMoreBtn' + sno);
 
-  <script>
-    // Start carousel and set auto-cycle interval
-    document.addEventListener("DOMContentLoaded", function () {
-      var myCarousel = document.getElementById("carouselExampleCaptions");
-      var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 3000, // Change slide every 3 seconds (3000 milliseconds)
-        wrap: true // Enable looping of slides
-      });
-    });
-  </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-
-  <script>
-    let current_url = document.location;
-    document.querySelectorAll(".navbar .color").forEach(function (e) {
-      if (e.href == current_url) {
-        e.classList += " current";
+      if (fullStoryDiv.style.display === 'none') {
+        fullStoryDiv.style.display = 'block';
+        seeMoreBtn.innerText = 'See Less';
+      } else {
+        fullStoryDiv.style.display = 'none';
+        seeMoreBtn.innerText = 'See More';
       }
-    });
+    }
   </script>
 
-</body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+ 
 
 </html>
-
