@@ -25,14 +25,14 @@
 
     <div class="container"style="max-width: 1260px; margin-top: 70px; margin-bottom: 200px; ">
       <div class="row d-flex justify-content-center" style="margin-bottom:79px;">
-        <u class="col-auto" ><h2 style=" ">Email Collection</h2></u>
+        <u class="col-auto" ><h2 style=" ">Our Orders</h2></u>
         <!-- <hr/> -->
-        <p class="col-12" style="text-align: center;"><span style="color: black">You should maintain privacy policy,<br>these are our very valuable collection of emails do not share with others!!</span></p> <br>
+        <p class="col-12" style="text-align: center;"><span style="color: black">You should maintain privacy policy,<br>these are our very valuable customers do not share their information with others!!</span></p> <br>
       </div>
       <div class="container my-4">
 
 
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <!-- <table id="example" class="table table-striped table-bordered" style="width:100%">
           <thead>
             <tr>
               <th>SN.</th>
@@ -47,30 +47,81 @@
             </tr>
           </thead>
           <tbody>
-            <!-- php MySQL query -->
+
             <?php
-              $sql = "SELECT * FROM `orders`";
-              $result = mysqli_query($conn,$sql);
-              // $num = mysqli_num_rows($result);
-              $sn = 0;
-              while($row = mysqli_fetch_assoc($result)){
-                $sn = $sn + 1;
-                echo "<tr>
-                        <td>". $sn. "</td>
-                        <td>". $row['name']. "</td>
-                        <td>". $row['email']. "</td>
-                        <td>". $row['phone']. "</td>
-                        <td>". $row['address']. "</td>
-                        <td>". $row['product_name']. "</td>
-                        <td>". $row['product_price']. "</td>
-                        <td>". $row['product_quantity']. "</td>
-                      </tr>";
-              }
+              // $sql = "SELECT * FROM `orders`";
+              // $result = mysqli_query($conn,$sql);
+              // // $num = mysqli_num_rows($result);
+              // $sn = 0;
+              // while($row = mysqli_fetch_assoc($result)){
+              //   $sn = $sn + 1;
+              //   echo "<tr>
+              //           <td>". $sn. "</td>
+              //           <td>". $row['name']. "</td>
+              //           <td>". $row['email']. "</td>
+              //           <td>". $row['phone']. "</td>
+              //           <td>". $row['address']. "</td>
+              //           <td>". $row['product_name']. "</td>
+              //           <td>". $row['product_price']. "</td>
+              //           <td>". $row['product_quantity']. "</td>
+              //         </tr>";
+              // }
             ?>
           </tbody>
 
 
-        </table>
+        </table> -->
+
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>SN.</th>
+                <th>Name</th>
+                <th>Email address</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Product name</th>
+                <th>Product price</th>
+                <th>Product quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- php MySQL query -->
+            <?php
+            $sn = 0;
+            foreach ($formValues as $values) {
+                $sn++;
+                echo "<tr>";
+                echo "<td>" . $sn . "</td>";
+                echo "<td>" . $values['name'] . "</td>";
+                echo "<td>" . $values['email'] . "</td>";
+                echo "<td>" . $values['phone'] . "</td>";
+                echo "<td>" . $values['address'] . "</td>";
+
+                // Loop through the product values and display them
+                echo "<td>";
+                foreach ($values['product_name'] as $productName) {
+                    echo $productName . "<br>";
+                }
+                echo "</td>";
+
+                echo "<td>";
+                foreach ($values['product_price'] as $productPrice) {
+                    echo $productPrice . "<br>";
+                }
+                echo "</td>";
+
+                echo "<td>";
+                foreach ($values['product_quantity'] as $productQuantity) {
+                    echo $productQuantity . "<br>";
+                }
+                echo "</td>";
+
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
       </div>
     </div>
 
