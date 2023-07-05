@@ -290,11 +290,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <textarea name="address" id="address" class="form-control" rows="4" required></textarea>
         </div>
 
-        <?php foreach ($_SESSION['cart'] as $key => $value) : ?>
+        <?php if (isset($_SESSION['cart'])) {foreach ($_SESSION['cart'] as $key => $value) : ?>
             <input type="hidden" name="product_name[]" value="<?php echo $value['name']; ?>">
             <input type="hidden" name="product_price[]" value="<?php echo $value['price']; ?>">
             <input type="hidden" name="product_quantity[]" value="<?php echo $value['quantity']; ?>">
-        <?php endforeach; ?>
+        <?php endforeach; }?>
 
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         <input type="submit" name="submit" value="submit" class="btn btn-success" style="float:right; margin-right:30px; margin-bottom:120px; width:100px;" >
