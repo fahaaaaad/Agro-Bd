@@ -54,32 +54,20 @@
     </div>
   <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h2>1.Raw Material Suppliers</h2>
-      <ul>
-        <li>Seed and fertilizer producers supply essential inputs for farming.</li>
-        <li>Livestock breeders provide healthy and productive animals.</li>
-      </ul>
-    </div>
-    <div class="col-md-6">
-      <h2>2.Manufacturers and Processors</h2>
-      <ul>
-        <li>Agricultural machinery manufacturers produce equipment for farming operations.</li>
-        <li>Food processors transform raw agricultural products into processed food items.</li>
-      </ul>
-    </div>
+  
+  
   </div>
   
   <div class="row">
     <div class="col-md-6">
-      <h2>3.Distributors and Wholesalers</h2>
+      <h2>1.Distributors and Wholesalers</h2>
       <ul>
         <li>Distributors procure products from manufacturers and wholesalers and store them in warehouses.</li>
         <li>Wholesalers purchase products in bulk and distribute them to retailers and other businesses.</li>
       </ul>
     </div>
     <div class="col-md-6">
-      <h2>4.Retailers</h2>
+      <h2>2.Retailers</h2>
       <ul>
         <li>Agricultural supply stores offer a wide range of farming products directly to farmers.</li>
         <li>Supermarkets and grocery stores sell agricultural products to consumers.</li>
@@ -89,24 +77,25 @@
   
   <div class="row">
     <div class="col-md-6">
-      <h2>5.Farmers</h2>
+      <h2>3.Agro BD</h2>
       <ul>
-        <li>Crop farmers cultivate and grow crops for various purposes, such as food production or raw materials.</li>
-        <li>Livestock farmers raise animals for meat, dairy, eggs, or other byproducts.</li>
+         <li>Agro BD connects farmers with suppliers and provides access to a diverse range of farming products.</li>
+        <li>Agro BD offers educational resources, community engagement, and secure online ordering for convenience.</li>
+        
+        
       </ul>
     </div>
     <div class="col-md-6">
-      <h2>6.Agro BD</h2>
+      <h2>4.Farmer</h2>
       <ul>
-        <li>Agro BD connects farmers with suppliers and provides access to a diverse range of farming products.</li>
-        <li>Agro BD offers educational resources, community engagement, and secure online ordering for convenience.</li>
+       <li>Livestock farmers raise animals for meat, dairy, eggs, or other byproducts.</li>
       </ul>
     </div>
   </div>
   
   <div class="row">
     <div class="col-md-6">
-      <h2>7.Consumers</h2>
+      <h2>5.Consumers</h2>
       <ul>
         <li>Consumers purchase agricultural products from retailers for personal consumption.</li>
       </ul>

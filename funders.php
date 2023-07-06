@@ -90,7 +90,7 @@
             We collaborate with financial institutions to offer tailored financing solutions for agriculture MSMEs.
             Using alternative data and our proprietary credit scoring algorithm, we ensure efficient loan approvals and
             timely fund disbursement. Additionally, we provide advisory support, training programs, and monitoring
-            services to maximize profitability and enable sustainable growth. Join us at [Your Website Name] to
+            services to maximize profitability and enable sustainable growth. Join us at Agro Bd to
             revolutionize financing for Agri MSMEs and drive economic prosperity in the agriculture sector.
           </p>
         </div>

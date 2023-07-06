@@ -72,7 +72,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <!-- Home -->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            <a class="nav-link" aria-current="page" href="index.php">Home</a>
           </li>
   
           <!-- About Us -->

@@ -129,7 +129,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <?php require 'partials/_header.php' ?>
 
     <div class="card bg-dark text-white">
-      <img class="card-img" src="poultry.jpg" alt="Card image" style="width: 100%; height: auto; max-height: 500px;">
+      <img class="card-img" src="images/chickens-2522623.jpg" alt="Card image" style="width: 100%; height: auto; max-height: 500px;">
 
 
 
