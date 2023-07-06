@@ -140,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <div class="container my-5 text-center"> <!-- Added text-center class -->
       <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
         <h1 class="section-header landing-section-title title-font">
-          Fish Feed 
+          Poultry Feed 
         </h1>
 
         <div class="landing-section-content">
