@@ -219,7 +219,7 @@
                     <li>
                       <hr class="dropdown-divider">
                     </li>
-                    <li><a href="#"> Supply Chain</a></li>
+                    <li><a href="supply_chain.php"> Supply Chain</a></li>
                   </ul>
                 </div>
               </li>
