@@ -21,7 +21,54 @@
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
 
     <style>
+      /* inner nav style */
+      .side-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 200px;
+        height: 100vh;
+        background-color: #6d6d6d85;
+        /* padding: 20px; */
+        overflow-y: auto;
+        z-index: 1; /* Lower z-index to ensure main navbar appears above */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
+      .side-navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .side-navbar li {
+        margin-bottom: 10px;
+      }
+
+      .side-navbar a {
+        color: #000;
+        text-decoration: none;
+        font-size: 18px; /* Increase the font size as per your preference */
+        font-weight: bold; /* Make the link letters bold */
+      }
+
+      .side-navbar a:hover {
+        background-color: #e9ecef;
+        color: #007bff;
+      }
+
+      .main-navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        /* padding: 10px; */
+        z-index: 2; /* Higher z-index to ensure it appears above side navbar */
+      }
     </style>
   </head>
 
@@ -29,33 +76,33 @@
     <!-- css first -->
     <script>0</script>
 
-    <!-- Header -->
-    <?php require 'partials/_header.php'?>
+    <!-- Side Navbar -->
+    <div class="side-navbar">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link link-dark link-opacity-75" aria-current="page" href="carpTypes.php">Types</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-dark link-opacity-75" href="carpDiseases.php">Diseases</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-dark link-opacity-75" href="carpFeed.php">Feed</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-dark link-opacity-75" href="carpTips.php">Tips</a>
+        </li>
+      </ul>
+    </div>
 
-    <!-- Inner Nav -->
-    <nav class="navbar navbar-default mb-5 sticky-top bg-secondary " style="padding-bottom: 0; padding-top: 0;">
-      <div class="container" style="justify-content: center;">
-        <ul class="nav justify-content-center bg-secondary ">
-          <li class="nav-item">
-            <a class="nav-link link-dark link-opacity-75" aria-current="page" href="carpTypes.php">Types</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark link-opacity-75" href="carpDiseases.php">Diseases</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark link-opacity-75" href="carpFeed.php">Feed</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-dark link-opacity-75" href="carpTips.php">Tips</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <!-- Main Navbar Content -->
+    <div class="main-navbar">
+      <?php require 'partials/_header.php' ?>
+    </div>
 
 
 
     <!-- body -->
-    <div style="margin-top:65px; margin-bottom:65px;">
+    <div style="margin-top:135px; margin-bottom:65px;">
       <!-- <h2>Cow Feed</h2>
       <p style="text-align: justify;"> -->
       <h2 class="mb-4" style="max-width:1400px; margin-left:auto; margin-right:auto;">Carp Fish Feed</h2>
