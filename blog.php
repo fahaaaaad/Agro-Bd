@@ -47,7 +47,7 @@
     </div>
 
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <?php
       include 'partials/_dbconnect.php';
 

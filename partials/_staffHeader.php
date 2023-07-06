@@ -167,8 +167,7 @@ require 'partials/_user.php';
             <button type="button" class="btn btn-outline-danger">
               <a href="/AgroBDc/Agro-Bd-1/partials/_logout.php" style="a:hover {color: white;};">Log out</a>
             </button>
-            <button type="button" class="btn btn-secondary">En</button>
-            <button type="button" class="btn btn-success">Bd</button>
+
           </div>
 
 
