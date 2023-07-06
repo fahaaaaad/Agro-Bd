@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -13,11 +16,31 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
+    <style>
+      #alert-container {
+        display: none;
+      }
+    </style>
   </head>
 
   <body>
     <!-- css first -->
     <script>0</script>
+
+    <!-- Alert -->
+    <?php
+      if (isset($_SESSION['success']) && $_SESSION['success']) {
+          echo '
+              <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:-5px">
+                  <strong>Success!</strong> Your cart has been submitted with the form. We will deliver your product within 72 hours!!!
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          ';
+
+          // Reset the session variable to avoid showing the alert on refresh
+          unset($_SESSION['success']);
+      }
+    ?>
 
     <!-- Header -->
     <?php require 'partials/_header.php' ?>
@@ -117,9 +140,10 @@
           <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
 
-              <h3 class="mb-0">Our Companies</h3>
+              <h3 class="mb-0">Agro-BD</h3>
 
-              <p class="mb-auto"> Empowering Farmers with Proven Tips, Quality Supplies, and Seamless Shopping Experience..
+              <p class="mb-auto"> Empowering Farmers with Proven Tips, Quality Supplies, Seamless Shopping Experience and advisory
+                services to the farmers
               </p>
 
             </div>
@@ -219,6 +243,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
+
+    <script>
+        // Show the alert container after the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('alert-container').style.display = 'block';
+        });
+    </script>
 
   </body>
 

@@ -47,7 +47,7 @@
     </div>
 
   <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="justify-content: center;">
       <?php
       include 'partials/_dbconnect.php';
 
@@ -64,7 +64,7 @@
           
             <div class='card shadow-sm'>
               <img class='bd-placeholder-img card-img-top' width='100%' height='225' src='uploads/".$row['image']."'>
-                <p class='card-text'>" . $row['name'] . "</p>
+                <p class='card-text' style='text-align: center;font-weight: bold;'>" . $row['name'] . "</p>
               <div class='card-body'>
                 
                 <div id='fullStory".$sno."' style='display: none;'>" . $row['stories'] . "</div>

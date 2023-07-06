@@ -50,9 +50,8 @@
             </svg>
           </div>
           <h3 class="fs-2 text-body-emphasis">Access to Input</h3>
-          <p>Gain easy access to a wide range of high-quality agricultural inputs, including seeds, fertilizers,
-            pesticides, and animal feed.Our trusted network of suppliers ensures reliable and timely availability of
-            inputs, empowering farmers to optimize their production..</p>
+          <p>Gain easy access to a wide range of high-quality animal feed. Our trusted network of suppliers ensures reliable and timely availability of
+            inputs, empowering farmers to optimize their production.</p>
 
         </div>
         <div class="feature col">
@@ -63,8 +62,7 @@
             </svg>
           </div>
           <h3 class="fs-2 text-body-emphasis">Training</h3>
-          <p>Benefit from comprehensive training programs and workshops conducted by experienced agricultural
-            experts.Our training sessions cover various topics such as modern farming techniques, disease management,
+          <p>Benefit from comprehensive training programs and workshops conducted by experienced farmers. Our training sessions cover various topics such as modern farming techniques, disease management,
             livestock care, and sustainable practices, empowering farmers with the knowledge and skills to excel.</p>
 
         </div>
@@ -76,12 +74,12 @@
             </svg>
           </div>
           <h3 class="fs-2 text-body-emphasis">Call Center</h3>
-          <p>Our dedicated call center is available to provide farmers with prompt assistance and support Knowledgeable
+          <p>Our dedicated call center is available to provide farmers with prompt assistance and support. Knowledgeable
             and friendly support staff are ready to address queries, provide guidance on farming-related challenges, and
             offer troubleshooting solutions.</p>
 
         </div>
-        <div class="feature col">
+        <!-- <div class="feature col">
           <div
             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
             <svg class="bi" width="1em" height="1em">
@@ -93,7 +91,7 @@
             platform facilitates direct market linkages, enabling farmers to negotiate fair prices and maximize their
             profits.</p>
 
-        </div>
+        </div> -->
 
 
       </div>
@@ -106,8 +104,8 @@
         <h1 class="text-body-emphasis">Empowering Farmers at the Core</h1>
         <p class="col-lg-8 mx-auto lead">
           At Agro Bd, we are fully dedicated to placing farmers at the forefront of our efforts. Our primary goal is to
-          enhance farmers' income and livelihood by providing an integrated package of finance, input access, timely
-          advisory services, and market access through our platform. Through these comprehensive offerings, we strive to
+          enhance farmers' income and livelihood by providing input access, timely
+          advisory services through our platform. Through these comprehensive offerings, we strive to
           empower farmers and foster their long-term success.
         </p>
       </div>
