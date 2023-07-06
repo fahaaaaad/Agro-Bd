@@ -66,3 +66,22 @@
 
   </body>
 </html>
+
+
+    <!-- // function toggleMark(button) {
+    //   var rowId = $(button).data('row-id');
+    //   var markButtonValue = $(button).text();
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "orders.php",
+    //     data: {
+    //       rowId: rowId
+    //     },
+    //     success: function() {
+    //       var row = $("#row-" + rowId);
+    //       row.toggleClass("marked-row");
+    //       $(button).toggleClass("btn-primary");
+    //       $(button).text(markButtonValue === "Mark" ? "Unmark" : "Mark");
+    //     }
+    //   });
+    // } -->

@@ -39,56 +39,52 @@ if (isset($_POST['add_to_cart'])) {
 }
 // session_destroy();
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-  include 'partials/_dbconnect.php';
-  if(isset($_POST['submit'])){
-    // Retrieve order form data
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $address = $_POST['address'];
-  
-    // Retrieve product information
-    $productNames = $_POST['product_name'];
-    $productPrices = $_POST['product_price'];
-    $productQuantities = $_POST['product_quantity'];
-  
-  
-  // Validate required fields
-    if (!empty($name) && !empty($email) && !empty($phone) && !empty($address) && !empty($productNames) && !empty($productPrices) && !empty($productQuantities)) {
-        // Insert order information into the database
-        $sql = "INSERT INTO orders (name, email, phone, address, product_name, product_price, product_quantity) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['submit'])) {
+        // Retrieve order form data
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        // Remove the timestamp field from here
         
-        if ($stmt) {
-            // Bind parameters to the prepared statement
-            mysqli_stmt_bind_param($stmt, "ssssssd", $name, $email, $phone, $address, $productName, $productPrice, $productQuantity);
-            
-            // Loop through the product information and execute the prepared statement
-            for ($i = 0; $i < count($productNames); $i++) {
-                $productName = $productNames[$i];
-                $productPrice = $productPrices[$i];
-                $productQuantity = $productQuantities[$i];
-                
-                mysqli_stmt_execute($stmt);
+        // Retrieve product information
+        $productNames = $_POST['product_name'];
+        $productPrices = $_POST['product_price'];
+        $productQuantities = $_POST['product_quantity'];
+
+        // Validate required fields
+        if (!empty($name) && !empty($email) && !empty($phone) && !empty($address) && !empty($productNames) && !empty($productPrices) && !empty($productQuantities)) {
+            // Insert order information into the database with the current timestamp
+            $sql = "INSERT INTO orders (name, email, phone, address, time, product_name, product_price, product_quantity) VALUES (?, ?, ?, ?, NOW(), ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $sql);
+
+            if ($stmt) {
+                // Bind parameters to the prepared statement
+                mysqli_stmt_bind_param($stmt, "sssssss", $name, $email, $phone, $address, $productName, $productPrice, $productQuantity);
+
+                // Loop through the product information and execute the prepared statement
+                for ($i = 0; $i < count($productNames); $i++) {
+                    $productName = $productNames[$i];
+                    $productPrice = $productPrices[$i];
+                    $productQuantity = $productQuantities[$i];
+
+                    mysqli_stmt_execute($stmt);
+                }
+
+                mysqli_stmt_close($stmt);
             }
-            
-            mysqli_stmt_close($stmt);
+
+            // Clear form values after submission
+            $name = $email = $phone = $address = '';
+
+            // Clear the cart after successful submission if desired
+            $_SESSION['cart'] = array();
+        } else {
+            // Required fields are missing, handle the error as desired
+            // You can set an error message or perform any necessary actions
         }
-        
-        // Clear form values after submission
-        $name = $email = $phone = $address = '';
-        
-        // Clear the cart after successful submission if desired
-        $_SESSION['cart'] = array();
-    } else {
-        // Required fields are missing, handle the error as desired
-        // You can set an error message or perform any necessary actions
     }
-
-  }
-
-
 }
 
 ?>
@@ -521,6 +517,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="hidden" name="product_price[]" value="<?php echo $value['price']; ?>">
             <input type="hidden" name="product_quantity[]" value="<?php echo $value['quantity']; ?>">
         <?php endforeach; }?>
+
+        <!-- Add the hidden input field for timestamp -->
+        <!-- <input type="hidden" name="timestamp" value="<?php echo date('Y-m-d H:i:s'); ?>"> -->
 
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
         <input type="submit" name="submit" value="submit" class="btn btn-success" style="float:right; margin-right:30px; margin-bottom:120px; width:100px;" >
