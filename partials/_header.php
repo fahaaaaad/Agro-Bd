@@ -236,6 +236,10 @@
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
             Login
           </button>
+
+          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#signupmodal">
+            signup
+          </button>
   
   
           <!-- Modal -->
@@ -264,6 +268,71 @@
                         placeholder="Password">
                       <label for="floatingPassword">Password</label>
                     </div>
+  
+                    <div class="form-check text-start my-3">
+                      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Remember me
+                      </label>
+                    </div>
+  
+                    <!-- <button class="btn btn-primary w-100 py-2" type="submit" name="signIn" id="Save" value=" Save ">Sign in</button> -->
+                    <!-- Submit button -->
+                    <div>
+                      <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
+                        style="width:100px;" />
+                    </div>
+                  </form>
+  
+  
+                </div>
+                <div class="modal-footer">
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- Modal -->
+          <!-- signup modal -->
+          <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+  
+  
+                  <!-- Signup form -->
+                  <form action="" method="post">
+                    <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+                    <div class="form-floating my-3">
+                      <input type="text" class="form-control" name="full_name" id="floatingInput">
+                      <label for="floatingInput">Full Name</label>
+                    </div>
+                     <div class="form-floating my-3">
+                      <input type="text" class="form-control" name="username" id="floatingInput">
+                      <label for="floatingInput">Username</label>
+                    </div>
+                     <div class="form-floating my-3">
+                      <input type="email" class="form-control" name="email" id="floatingInput">
+                      <label for="floatingInput">Email</label>
+                    </div>
+                   
+                    <div class="form-floating my-3">
+                      <input name="mobile" type="text" class="form-control" minlength="11" maxlength="11" id="mobile" required placeholder="01xxxxxxxxx"
+                onkeypress="return isNumberKey(event)" />
+                      <label for="floatingPassword">Phone Number</label>
+                    </div>
+                    <div class="form-floating my-3">
+                              <input type="password" class="form-control " minlength="8" name="password" id="floatingInput" >
+                              <label for="floatingInput">Password</label>
+                              <div class="invalid-feedback">Password must be at least 8 characters long.</div>
+                            </div>
+
   
                     <div class="form-check text-start my-3">
                       <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
