@@ -57,7 +57,7 @@
       $email = $_POST['email'];
       $mobile = $_POST['mobile'];
       $password = $_POST['password'];
-      $account_type = $_POST['flexRadioDefault']
+      $account_type = $_POST['flexRadioDefault'];
       $verify_token = md5(rand());
 
       // Email Exists or not
@@ -71,10 +71,10 @@
       }
       else{
         // Ensert user data
-        $sql="INSERT INTO `user` (`id`, `name`, `username`, `email`, `mobile`, `account_type`, `interest`, `photo`, `password`, `Verify_token`, `created_at`) VALUES (NULL, '$name', '$username', '$email', '$mobile', '$account_type', NULL, NULL, '$password', '$verify_token', current_timestamp()); "
+        $sql="INSERT INTO `user` (`id`, `name`, `username`, `email`, `mobile`, `account_type`, `interest`, `photo`, `password`, `Verify_token`, `created_at`) VALUES (NULL, '$name', '$username', '$email', '$mobile', '$account_type', NULL, NULL, '$password', '$verify_token', current_timestamp()) ";
         $result = mysqli_query($conn, $sql);
         if($result){
-          sendemail
+          // sendemail
           $_SESSION['status']="Registration Success! Please verify your email address!!";
           header("Location: index.php");
         }
