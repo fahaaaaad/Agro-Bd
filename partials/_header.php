@@ -216,10 +216,7 @@
                     </li>
                     <li><a href="funders.php"> For Funders</a></li>
                     
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a href="supply_chain.php"> Supply Chain</a></li>
+                   
                   </ul>
                 </div>
               </li>
@@ -321,7 +318,7 @@
                       <input type="email" class="form-control" name="email" id="floatingInput">
                       <label for="floatingInput">Email</label>
                     </div>
-                   
+                  
                     <div class="form-floating my-3">
                       <input name="mobile" type="text" class="form-control" minlength="11" maxlength="11" id="mobile" required placeholder="01xxxxxxxxx"
                 onkeypress="return isNumberKey(event)" />

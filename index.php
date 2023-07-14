@@ -60,30 +60,30 @@ session_start();
           <img src="slide1.jpg" class="d-block w-100 h-25" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h1>Welcome to Agro-Bd</h1>
-            <p>Grow. Nurture. Harvest.</p>
-            <button class="btn btn-danger ml-md-2">Harvest</button>
-            <button class="btn btn-success ml-md-2">Farming</button>
-            <button class="btn btn-primary ml-md-2 ml-4">Greenery</button>
+            <p>Be A Farmer. Work Hard Success.</p>
+            <button class="btn btn-danger ml-md-2">Be A Farmer</button>
+            <button class="btn btn-success ml-md-2">Work Hard</button>
+            <button class="btn btn-primary ml-md-2 ml-4">Gain Success</button>
           </div>
         </div>
         <div class="carousel-item">
           <img src="slider2.jpg" class="d-block w-100 h-25" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h1>Welcome to Agro-Bd</h1>
-            <p>Grow. Nurture. Harvest.</p>
-            <button class="btn btn-danger ml-md-2">Harvest</button>
-            <button class="btn btn-success ml-md-2">Farming</button>
-            <button class="btn btn-primary ml-md-2 ml-4">Greenery</button>
+            <p>Be A Farmer | Work Hard | Gain Success </p>
+            <button class="btn btn-danger ml-md-2">Be A Farmer</button>
+            <button class="btn btn-success ml-md-2">Work Hard</button>
+            <button class="btn btn-primary ml-md-2 ml-4">Gain Success</button>
           </div>
         </div>
         <div class="carousel-item">
           <img src="slider3.jpg" class="d-block w-100 h-25" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h1>Welcome to Agro-Bd</h1>
-            <p>Grow. Nurture. Harvest.</p>
-            <button class="btn btn-danger ml-md-2">Harvest</button>
-            <button class="btn btn-success ml-md-2">Farming</button>
-            <button class="btn btn-primary ml-md-2 ml-4">Greenery</button>
+            <p>Be A Farmer | Work Hard | Gain Success</p>
+            <button class="btn btn-danger ml-md-2">Be A Farmer</button>
+            <button class="btn btn-success ml-md-2"> Work Hard </button>
+            <button class="btn btn-primary ml-md-2 ml-4">Gain Success</button>
           </div>
         </div>
       </div>
