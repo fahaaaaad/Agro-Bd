@@ -33,7 +33,8 @@ if (isset($_POST['signUp'])) {
     if ($num > 0) {
         header("Location: https://localhost/AgroBDc/Agro-Bd-1/index.php?email_exists=true");
         exit;
-    } else {
+    } 
+    else {
         // Insert user data
         $sql = "INSERT INTO `user` (`user_id`, `name`, `username`, `email`, `mobile`, `account_type`, `interest`, `photo`, `password`, `Verify_token`, `created_at`) VALUES (NULL, '$name', '$username', '$email', '$mobile', '$account_type', NULL, NULL, '$password', '$Verify_token', current_timestamp()) ";
         $result = mysqli_query($conn, $sql);
@@ -98,7 +99,8 @@ try {
     $mail->send();
 
     // Display the verification form
-    echo '<!doctype html>
+    echo '
+      <!doctype html>
       <html lang="en">
       <head>
           <meta charset="utf-8">
