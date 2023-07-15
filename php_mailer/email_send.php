@@ -23,19 +23,10 @@ try {
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 
-$full_name = $_POST['full_name_s'];
-$user_name = $_POST['username_s'];
-$email_s = $_POST['email_s'];
-$password_s = $_POST['password_s'];
-
-
-
-
-
-
-
-
-
+    $full_name = $_POST['full_name_s'];
+    $user_name = $_POST['username_s'];
+    $email_s = $_POST['email_s'];
+    $password_s = $_POST['password_s'];
 
 
 
@@ -43,7 +34,8 @@ $password_s = $_POST['password_s'];
     $mail->setFrom('teamorion0007@gmail.com', 'Agro Bd');
     $mail->addAddress($email_s);     //Add a recipient
 
-    //Attachments
+
+    ////Attachments
     // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 

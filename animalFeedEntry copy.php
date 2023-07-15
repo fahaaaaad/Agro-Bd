@@ -7,45 +7,44 @@
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     include 'partials/_dbconnect.php';
 
-    $product_type = $_POST['product_type'];
-    $product_name = $_POST['product_name'];
-    $product_price = $_POST['product_price'];
-    $product_quantity = $_POST['product_quantity'];
+    $type = $_POST['type'];
+    $productName = $_POST['productName'];
+    $price = $_POST['price'];
     // $image = $_POST['photo'];
 
-    if(isset($_FILES['product_image'])){
-      $product_image_name = $_FILES['product_image']['name'];
-      $product_image_tmp_name = $_FILES['product_image']['tmp_name'];
-      $product_image_size = $_FILES['product_image']['size'];
-      $product_image_new_name = rand() . $product_image_name;
-      // echo $product_image_name;
-      if($product_image_size > 5242880){
+    if(isset($_FILES['photo'])){
+      $photo_name = $_FILES['photo']['name'];
+      $photo_tmp_name = $_FILES['photo']['tmp_name'];
+      $photo_size = $_FILES['photo']['size'];
+      $photo_new_name = rand() . $photo_name;
+      // echo $photo_name;
+      if($photo_size > 5242880){
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error!</strong> Product image is very big! Maximum size is 5MB.
+                <strong>Error!</strong> photo is very big! Maximum size is 5MB.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>';
       }
       else{
-        // $sql = "SELECT * FROM `$type` WHERE `name` LIKE '$productName' ";
-        // $result = mysqli_query($conn, $sql);
-        // $num = mysqli_num_rows($result);
-        // if($num > 0){
-        //   $productExists = true; 
-        // }
-        // else{
-          $sql = "INSERT INTO `products` (`product_id`, `product_type`, `product_name`, `product_price`, `product_quantity`, `product_image`) VALUES (NULL, '$product_type', '$product_name', '$product_price', '$product_quantity', '$product_image_new_name')";
+        $sql = "SELECT * FROM `$type` WHERE `name` LIKE '$productName' ";
+        $result = mysqli_query($conn, $sql);
+        $num = mysqli_num_rows($result);
+        if($num > 0){
+          $productExists = true; 
+        }
+        else{
+          $sql = "INSERT INTO `$type` (`sno`, `name`, `image`, `price`) VALUES (NULL, '$productName', '$photo_new_name', '$price')";
           $result = mysqli_query($conn, $sql);
           if($result){
             $enter = true;
             // $showAlert = true;
-            move_uploaded_file($product_image_tmp_name, "uploads/" . $product_image_new_name);
+            move_uploaded_file($photo_tmp_name, "uploads/" . $photo_new_name);
           }
           else{
-            echo "Failed to Update record successfully! refresh the page (F5) and try again.<br>";
+            echo "Failed to Updated record successfully! refresh the page (F5) and try again.<br>";
           }
-      //   }
+        }
       }
     }
   }
@@ -145,53 +144,40 @@
         <form action="" method="post"  enctype ="multipart/form-data" style="min-width: 720px;">
 
 
-        <!-- product_type -->
           <div class="form-group row mt-2 mb-2">
-            <label for="product_type" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Product Type: <span style="color: red">*</span></label>
+            <label for="type" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Product Type: <span style="color: red">*</span></label>
             <div class="col-sm-9">
-              <select class="form-select" id="product_type" name="product_type" aria-label="Floating label select example" required>
+              <select class="form-select" id="type" name="type" aria-label="Floating label select example" required>
                 <!-- <option selected>Select product type</option> -->
                   <option value="">Select type</option>
-                  <option value="Cattle Feed">Cattle Feed</option>
-                  <option value="Poultry Feed">Poultry Feed</option>
-                  <option value="Fish Feed">Fish Feed</option>
+                  <option value="cattleFeed">Cattle Feed</option>
+                  <option value="poultryFeed">Poultry Feed</option>
+                  <option value="fishFeed">Fish Feed</option>
               </select>
             </div>
           </div>
 
-          <!-- product_name -->
           <div class="form-group row mt-2 mb-2">
-            <label for="product_name" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Name: <span style="color: red">
+            <label for="productName" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Product Name: <span style="color: red">
                 *</span></label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="product_name" name="product_name" required>
+              <input type="text" class="form-control" id="productName" name="productName" required>
             </div>
           </div>
 
-          <!-- product_price -->
           <div class="form-group row mt-2 mb-2">
-            <label for="product_price" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Price: <span style="color: red">
+            <label for="price" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Price: <span style="color: red">
                 *</span></label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="product_price" name="product_price" required onkeypress="return isNumberKey(event)">
+              <input type="text" class="form-control" id="price" name="price" required>
             </div>
           </div>
-          
-          <!-- product_image -->
+
           <div class="form-group row mt-2 mb-2">
-            <label for="product_image" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Image: <span style="color: red">*</span></label>
+            <label for="photo" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Photo: <span style="color: red">*</span></label>
             <div class="col-sm-9">
               <!-- <img src="uploads/<?php //echo $row['photo'];?>" alt=""> -->
-              <input type="file" accept="image/*" name="product_image" class="form-control" id="product_image" required/>
-            </div>
-          </div>
-
-          <!-- product_price -->
-          <div class="form-group row mt-2 mb-2">
-            <label for="product_quantity" class="col-sm-3 col-form-label" style="padding-left: 15px; margin-right: -15px;">Quantity: <span style="color: red">
-                *</span></label>
-            <div class="col-sm-9">
-              <input type="text" class="form-control" id="product_quantity" name="product_quantity" required onkeypress="return isNumberKey(event)">
+              <input type="file" accept="image/*" name="photo" class="form-control" id="photo" required/>
             </div>
           </div>
 

@@ -1,7 +1,10 @@
 <?php
 
   include 'partials/_dbconnect.php';
-  if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+
+  
+  // if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['signIn'])){
       $username = $_POST['username'];
       $password = $_POST['password'];
@@ -51,75 +54,88 @@
       }  
     }
 
-    if(isset($_POST['signUp'])){
-      $name = $_POST['full_name'];
-      $username = $_POST['username'];
-      $email = $_POST['email'];
-      $mobile = $_POST['mobile'];
-      $password = $_POST['password'];
-      $account_type = $_POST['flexRadioDefault'];
-      $verify_token = md5(rand());
+    // // session_start();
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // use PHPMailer\PHPMailer\SMTP;
+    // use PHPMailer\PHPMailer\Exception; 
 
-      // Email Exists or not
-      $sql = "SELECT * FROM `user` WHERE email='$email' LIMIT 1 ";
-      $result = mysqli_query($conn, $sql);
-      $num = mysqli_num_rows($result);
-      // echo $num ;
-      if($num > 0){
-        $_SESSION['status']="Email already exists";
-        header("Location: index.php");
-      }
-      else{
-        // Ensert user data
-        $sql="INSERT INTO `user` (`id`, `name`, `username`, `email`, `mobile`, `account_type`, `interest`, `photo`, `password`, `Verify_token`, `created_at`) VALUES (NULL, '$name', '$username', '$email', '$mobile', '$account_type', NULL, NULL, '$password', '$verify_token', current_timestamp()) ";
-        $result = mysqli_query($conn, $sql);
-        if($result){
-          // sendemail
-          $_SESSION['status']="Registration Success! Please verify your email address!!";
-          header("Location: index.php");
-        }
-        else{
-          $_SESSION['status']="Registration Failed";
-          header("Location: index.php");
-        }
-      }
-    }
-// function generate_email_verification_token() {
-//   // Generate a random email verification token.
-//   $token_length = 32;
-//   $token_characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-//   $token = '';
-//   for ($i = 0; $i < $token_length; $i++) {
-//     $token .= $token_characters[rand(0, strlen($token_characters) - 1)];
-//   }
-//   return $token;
-// }
+    
+    // //Load Composer's autoloader
+    // require 'vendor/autoload.php';
 
-// function send_email_verification($email, $email_verification_token) {
-//   // Send the email verification email.
-//   $subject = 'Please verify your email address';
-//   $message = 'Hi,
+    // function sendemail_verify($name, $email, $verify_token){
+    //   $mail = new PHPMailer(true);
+    //   //Server settings
+    //   $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    //   $mail->isSMTP();                                            //Send using SMTP
+    //   $mail->Host       = 'smtp.example.com';                     //Set the SMTP server to send through
+    //   $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    //   $mail->Username   = 'user@example.com';                     //SMTP username
+    //   $mail->Password   = 'secret';                               //SMTP password
+    //   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    //   $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-// Please click on the link below to verify your email address:
+    //   //Recipients
+    //   $mail->setFrom('from@example.com', 'Mailer');
+    //   $mail->addAddress('joe@example.net', 'Joe User');     //Add a recipient
+    //   $mail->addAddress('ellen@example.com');               //Name is optional
+    //   $mail->addReplyTo('info@example.com', 'Information');
+    //   $mail->addCC('cc@example.com');
+    //   $mail->addBCC('bcc@example.com');
 
-// https://www.yourdomain.com/verify_email.php?token=' . $email_verification_token;
+    //   //Attachments
+    //   $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    //   $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
-//   mail($email, $subject, $message);
-// }
+    //   //Content
+    //   $mail->isHTML(true);                                  //Set email format to HTML
+    //   $mail->Subject = 'Here is the subject';
+    //   $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    //   $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-// if (isset($_POST['email'])) {
-//   // Generate an email verification token.
-//   $email_verification_token = generate_email_verification_token();
+    //   $mail->send();
+    //   echo 'Message has been sent';
+    // }
 
-//   // Send the email verification email.
-//   send_email_verification($_POST['email'], $email_verification_token);
+    // if(isset($_POST['signUp'])){
+    //   $name = $_POST['full_name'];
+    //   $username = $_POST['username'];
+    //   $email = $_POST['email'];
+    //   $mobile = $_POST['mobile'];
+    //   $password = $_POST['password'];
+    //   $account_type = $_POST['flexRadioDefault'];
+    //   $verify_token = md5(rand());
 
-//   // Redirect the user to the verification page.
-//   header('Location: partials/verify_email.php?token=' . $email_verification_token);
-// }
+    //   // Email Exists or not
+    //   $sql = "SELECT * FROM `user` WHERE email='$email' LIMIT 1 ";
+    //   $result = mysqli_query($conn, $sql);
+    //   $num = mysqli_num_rows($result);
+    //   // echo $num ;
+    //   if($num > 0){
+    //     $_SESSION['status']="Email already exists";
+    //     header("Location: index.php");
+    //   }
+    //   else{
+    //     // Insert user data
+    //     $sql="INSERT INTO `user` (`id`, `name`, `username`, `email`, `mobile`, `account_type`, `interest`, `photo`, `password`, `Verify_token`, `created_at`) VALUES (NULL, '$name', '$username', '$email', '$mobile', '$account_type', NULL, NULL, '$password', '$verify_token', current_timestamp()) ";
+    //     $result = mysqli_query($conn, $sql);
+    //     if($result){
+    //       sendemail_verify("$name", "$email", "$verify_token");
+    //       $_SESSION['status']="Registration Success! Please verify your email address!!";
+    //       header("Location: index.php");
+    //     }
+    //     else{
+    //       $_SESSION['status']="Registration Failed";
+    //       header("Location: index.php");
+    //     }
+    //   }
+    // }
 
 
-  }
+  // }
+
+
+
 ?>
 <script>0</script>
 <!-- Header -->
@@ -364,7 +380,7 @@
           </div>
         </div>
 
-           <!-- Modal -->
+          <!-- Modal -->
           <!-- signup modal -->
           <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -385,15 +401,15 @@
                       <input type="text" class="form-control" name="full_name_s" id="floatingInput">
                       <label for="floatingInput">Full Name</label>
                     </div>
-                     <div class="form-floating my-3">
+                      <div class="form-floating my-3">
                       <input type="text" class="form-control" name="username_s" id="floatingInput">
                       <label for="floatingInput">Username</label>
                     </div>
-                     <div class="form-floating my-3">
+                      <div class="form-floating my-3">
                       <input type="email" class="form-control" name="email_s" id="floatingInput">
                       <label for="floatingInput">Email</label>
                     </div>
-                   
+
                     <div class="form-floating my-3">
                       <input name="mobile" name="mobile_s" type="text" class="form-control" minlength="11" maxlength="11" id="mobile" required placeholder="01xxxxxxxxx"
                 onkeypress="return isNumberKey(event)" />
