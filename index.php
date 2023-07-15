@@ -1,6 +1,4 @@
-<?php
-// session_start();
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -19,8 +17,9 @@
     <style>
       #alert-container {
         display: none;
-      }
-    </style>
+    }
+</style>
+
   </head>
 
   <body>
@@ -28,19 +27,26 @@
     <script>0</script>
 
     <!-- Alert -->
-    <?php
-      // if (isset($_SESSION['success']) && $_SESSION['success']) {
-      //     echo '
-      //         <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:-5px">
-      //             <strong>Success!</strong> Your cart has been submitted with the form. We will deliver your product within 72 hours!!!
-      //             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      //         </div>
-      //     ';
+<?php
+if (isset($_GET['email_exists']) && $_GET['email_exists'] == 'true') {
+    echo '<div class="alert-container">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                The email already exists!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>';
+}
 
-      //     // Reset the session variable to avoid showing the alert on refresh
-      //     unset($_SESSION['success']);
-      // }
-    ?>
+// Check if verification is successful
+if (isset($_GET['verification_success'])) {
+    echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Verification successful! You can now log in.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>';
+}
+?>
+
+
 
     <!-- Header -->
     <?php require 'partials/_header.php' ?>
