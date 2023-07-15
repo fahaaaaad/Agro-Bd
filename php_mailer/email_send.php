@@ -31,7 +31,7 @@
         $num = mysqli_num_rows($result);
         
         if ($num > 0) {
-            header("Location: https://localhost/AgroBDc/Agro-Bd-1/index.php?email_exists=true");
+            header("Location: http://localhost/Agro_BD/Agro-Bd/?email_exists=true");
             exit;
         } 
         else {
@@ -60,7 +60,7 @@
 
             if ($result) {
                 // Verification successful, perform additional actions if needed
-                header("Location: https://localhost/AgroBDc/Agro-Bd-1/index.php?verification_success=true");
+                header("Location: http://localhost/Agro_BD/Agro-Bd/?verification_success=true");
                 exit;
             }
         }
@@ -116,7 +116,7 @@
                             </a>
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="https://localhost/AgroBDc/Agro-Bd-1/index.php">Home</a>
+                                    <a class="nav-link active" aria-current="page" href="http://localhost/Agro_BD/Agro-Bd/">Home</a>
                                 </li>
                             </ul>
                         </div>
