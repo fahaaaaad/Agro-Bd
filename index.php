@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 
 <!doctype html>
@@ -29,17 +29,17 @@ session_start();
 
     <!-- Alert -->
     <?php
-      if (isset($_SESSION['success']) && $_SESSION['success']) {
-          echo '
-              <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:-5px">
-                  <strong>Success!</strong> Your cart has been submitted with the form. We will deliver your product within 72 hours!!!
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-          ';
+      // if (isset($_SESSION['success']) && $_SESSION['success']) {
+      //     echo '
+      //         <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:-5px">
+      //             <strong>Success!</strong> Your cart has been submitted with the form. We will deliver your product within 72 hours!!!
+      //             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      //         </div>
+      //     ';
 
-          // Reset the session variable to avoid showing the alert on refresh
-          unset($_SESSION['success']);
-      }
+      //     // Reset the session variable to avoid showing the alert on refresh
+      //     unset($_SESSION['success']);
+      // }
     ?>
 
     <!-- Header -->
