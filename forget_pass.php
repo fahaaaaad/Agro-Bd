@@ -10,7 +10,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container-fluid">
     <a class="navbar-brand" href="#">
-     
+
       Agro Bd
     </a>
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -34,9 +34,9 @@
             <input type="text" class="form-control" id="floatingInput" placeholder="*****" name="email_r">
             <label for="floatingInput">Enter the email associated with your account to log in.</label>
           </div>
-         
-         
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+
+          <button class="w-100 btn btn-lg btn-primary" name="recovery_email_submit" type="submit">Sign up</button>
+
           <hr class="my-4">
           <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
         </form>
