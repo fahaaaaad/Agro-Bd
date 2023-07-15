@@ -367,7 +367,7 @@
                     <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
                       style="width:100px;" />
                       <a class="btn btn-danger" href="forget_pass.php" role="button">Forget Password?</a>
-                     
+                    
                   </div>
                     
                 </form>
