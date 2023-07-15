@@ -1,17 +1,6 @@
 <?php
 
-
-  // $NowDate =  new DateTime( "now", new DateTimeZone( "Asia/Dhaka"));
-  // // echo $NowDate ;
-
-  // $NowDateInString = strtotime($NowDate->format( 'Y-m-d'));
-  // // // echo $NowDateInString;
-  // // $NowTimeInString = strtotime($NowDate->format(' H:i'));
-  // // // echo $NowTimeInString;
-  // // $FixedTimeInStringForEvening = strtotime(' 17:00');
-  // // echo $FixedTimeInStringForEvening;
-
-
+  session_start();
 
   $success = false;
   $duplicate = false;
