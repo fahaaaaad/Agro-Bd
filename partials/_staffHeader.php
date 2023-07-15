@@ -44,7 +44,11 @@ require 'partials/_user.php';
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="emailCollection.php">Emails</a>
+              <a class="nav-link" aria-current="page" href="users.php">Users</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="staffInbox.php">Inbox</a>
             </li>';
           }
           if($admin){
@@ -83,15 +87,7 @@ require 'partials/_user.php';
                   <a class="nav-link dropdown-toggle" href="#">Products</a>
                   <div class="dropdown-menu">
                     <ul>
-                      <li><a href="cattleFeedTable.php">Cattle</a><li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a href="fishFeedTable.php">Fish</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a href="poultryFeedTable.php">Poultry</a></li>
+                      <li><a href="productsTable.php">Products</a><li>
                       <li>
                         <hr class="dropdown-divider">
                       </li>

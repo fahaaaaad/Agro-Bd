@@ -32,7 +32,7 @@
 
     <div class="container"style="max-width: 1260px; margin-top: 70px; margin-bottom: 200px; ">
       <div class="row d-flex justify-content-center" style="margin-bottom:79px;">
-        <u class="col-auto" ><h2 style=" ">Email Collection</h2></u>
+        <u class="col-auto" ><h2 style=" ">Users</h2></u>
         <!-- <hr/> -->
         <p class="col-12" style="text-align: center;"><span style="color: black">You should maintain privacy policy,<br>these are our very valuable collection of emails do not share with others!!</span></p> <br>
       </div>
@@ -44,16 +44,18 @@
             <tr>
               <th>SN.</th>
               <th>Email address</th>
+              <th>Username</th>
               <th>Name</th>
               <th>Mobile Number</th>
-              <th>Time</th>
+              <th>Interest</th>
+              <th>Creation time</th>
 
             </tr>
           </thead>
           <tbody>
             <!-- php MySQL query -->
             <?php
-              $sql = "SELECT * FROM `problems`";
+              $sql = "SELECT * FROM `user`";
               $result = mysqli_query($conn,$sql);
               // $num = mysqli_num_rows($result);
               $sn = 0;
@@ -62,9 +64,11 @@
                 echo "<tr>
                         <td>". $sn. "</td>
                         <td>". $row['email']. "</td>
+                        <td>". $row['username']. "</td>
                         <td>". $row['name']. "</td>
                         <td>". $row['mobile']. "</td>
-                        <td>". $row['date']. "</td>
+                        <td>". $row['interest']. "</td>
+                        <td>". $row['created_at']. "</td>
                       </tr>";
               }
             ?>

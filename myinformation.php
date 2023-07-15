@@ -172,7 +172,7 @@
 
     <div class="" style="max-width: 1060px; margin-top: 70px; margin-left: auto; margin-right: auto;">
       <div class="row d-flex justify-content-center" style="margin-bottom:79px;">
-        <h3 class="col-auto" style=" "> My Page</h3>
+        <h3 class="col-auto" style=" "> My Profile</h3>
         <hr />
       </div>
 

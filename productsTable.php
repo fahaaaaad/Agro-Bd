@@ -1,23 +1,22 @@
 
+
 <?php
 
 $update = false;
-$login = false;
-$myinformation = false;
 $delete = false;
 
 ?>
 
 <?php
 include 'partials/_dbconnect.php';
-//  Password Change
+//  Price Change
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  if(isset($_POST['usernameEdit'])){
+  if(isset($_POST['product_idEdit'])){
     // Update the record
-    $username = $_POST['usernameEdit'];
-    $newPassword = $_POST['passwordEdit'];
+    $sno = $_POST['product_idEdit'];
+    $newPrice = $_POST['product_priceEdit'];
     //sql query to be executed
-    $sql ="UPDATE `login` SET `password` = '$newPassword' WHERE `login`.`username` = '$username'";
+    $sql ="UPDATE `products` SET `product_price` = '$newPrice' WHERE `products`.`product_id` = '$sno'";
     $result = mysqli_query($conn, $sql);
     if($result){
       $update = true;
@@ -30,11 +29,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 //  Removing Data from the DataBase
 if(isset($_GET['delete'])){
-  $username = $_GET['delete'];
-  $sql = "DELETE FROM `myinformation` WHERE `username` = '$username'";
-  $result = mysqli_query($conn, $sql);
+  $sno = $_GET['delete'];
 
-  $sql = "DELETE FROM `login` WHERE `username` = '$username'";
+  $sql = "DELETE FROM `products` WHERE `product_id` = '$sno'";
   $result = mysqli_query($conn, $sql);
   if($result){
     $delete = true;
@@ -65,7 +62,6 @@ if(isset($_GET['delete'])){
     <link rel="stylesheet" href="css/headerNestedDropdown.css" />
     
 
-
   </head>
 
   <body>
@@ -77,15 +73,15 @@ if(isset($_GET['delete'])){
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="editModalLabel">Edit Password</h5>
+            <h5 class="editModalLabel">Edit Price</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-            <form action="staffPasswordChange.php" method="POST" style="min-width: fit-content;">
+            <form action="productsTable.php" method="POST" style="min-width: fit-content;">
               <div class="modal-body">
-                <input type="hidden" name="usernameEdit" id="usernameEdit">
+                <input type="hidden" name="product_idEdit" id="product_idEdit">
                 <div class="form-group">
-                  <label for="passwordEdit">Password</label>
-                  <input type="text" name="passwordEdit" class="form-control" id="passwordEdit" />
+                  <label for="product_priceEdit">Price</label>
+                  <input type="text" name="product_priceEdit" class="form-control" id="product_priceEdit" />
                 </div>
               </div>
               <div class="modal-footer">
@@ -101,35 +97,35 @@ if(isset($_GET['delete'])){
     <?php require 'partials/_staffHeader.php'?>
 
     <!-- Alerts -->
-    <?php
+<?php
 
-          if($update){
-            echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Success!</strong>Password has been Updated successfully in the DataBase!
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                ';
-          }
+      if($update){
+        echo '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Success!</strong>Price has been Updated successfully in the DataBase!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            ';
+      }
 
-          if($delete){
-            echo '
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  <strong>Success!</strong> Your selected username has been deleted successfully from the DataBase!
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                  ';
-          }
+      if($delete){
+        echo '
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Success!</strong> Your selected Product has been deleted successfully from the DataBase!
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+              ';
+      }
 
-    ?>
+?>
 
     <!-- body -->
 
     <div class="container"style="max-width: 900px; margin-top: 70px; margin-bottom: 200px; ">
       <div class="row d-flex justify-content-center" style="margin-bottom:79px;">
-        <u class="col-auto" ><h2 style=" ">Staff Passwords</h2></u>
+        <u class="col-auto" ><h2 style=" ">Product Table</h2></u>
         <!-- <hr/> -->
-        <p class="col-12" style="text-align: center;"><span style="color: black">You should maintain staffs privacy,<br>these are our very valuable staffs do not share there information with others!!</span></p> <br>
+        <!-- <p class="col-12" style="text-align: center;"><span style="color: black">You should maintain staffs privacy,<br>these are our very valuable staffs do not share there information with others!!</span></p> <br> -->
       </div>
       <div class="container my-4" style="min-width: 900px;">
 
@@ -138,8 +134,9 @@ if(isset($_GET['delete'])){
           <thead>
             <tr>
               <th>SN.</th>
-              <th>UserName</th>
-              <th>Password</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Image</th>
               <th>Actions</th>
 
             </tr>
@@ -147,7 +144,7 @@ if(isset($_GET['delete'])){
           <tbody>
             <!-- php MySQL query -->
             <?php
-              $sql = "SELECT * FROM `login`";
+              $sql = "SELECT * FROM `products`";
               $result = mysqli_query($conn,$sql);
               // $num = mysqli_num_rows($result);
               $sn = 0;
@@ -155,9 +152,10 @@ if(isset($_GET['delete'])){
                 $sn = $sn + 1;
                 echo "<tr>
                         <td>". $sn. "</td>
-                        <td>". $row['username']. "</td>
-                        <td>". $row['password']. "</td>
-                        <td style='min-width: 110px;''><button class='edit btn btn-sm btn-primary' id=". $row['username'].">Edit</button> <button class='delete btn btn-sm btn-primary' id=d". $row['username'].">Delete</button></td>
+                        <td>". $row['product_name']. "</td>
+                        <td>". $row['product_price']. "</td>
+                        <td>". $row['product_image']. "</td>
+                        <td style='min-width: 118px;'><button class='edit btn btn-sm btn-primary' id=". $row['product_id'].">Edit</button> <button class='delete btn btn-sm btn-primary' id=d". $row['product_id'].">Delete</button></td>
                       </tr>";
               }
             ?>
@@ -206,10 +204,10 @@ if(isset($_GET['delete'])){
         element.addEventListener("click", (e) => {
           console.log("edit ");
           tr = e.target.parentNode.parentNode;
-          password = tr.getElementsByTagName("td")[2].innerText;
-          console.log(password);
-          passwordEdit.value = password;
-          usernameEdit.value = e.target.id;
+          product_price = tr.getElementsByTagName("td")[2].innerText;
+          console.log(product_price);
+          product_priceEdit.value = product_price;
+          product_idEdit.value = e.target.id;
           console.log(e.target.id);
           $('#editModal').modal('toggle');
         })
@@ -220,10 +218,10 @@ if(isset($_GET['delete'])){
       Array.from(deletes).forEach((element)=>{
         element.addEventListener("click", (e) => {
           console.log("edit ");
-          username = e.target.id.substr(1);
+          product_id = e.target.id.substr(1);
           if(confirm("Are you sure you want to remove this entry!")){
             console.log("yes");
-            window.location = `staffPasswordChange.php?delete=${username}`;
+            window.location = `productsTable.php?delete=${product_id}`;
           }
           else{
             console.log("no");

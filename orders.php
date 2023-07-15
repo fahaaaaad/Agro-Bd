@@ -9,7 +9,7 @@ include 'partials/_dbconnect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (isset($_POST['rowId'])) {
     $rowId = $_POST['rowId'];
-    $updateSql = "UPDATE `orders` SET `mark` = IF(`mark` = 'marked', 'unmarked', 'marked') WHERE `sno` = ?";
+    $updateSql = "UPDATE `orders` SET `mark` = IF(`mark` = 'marked', 'unmarked', 'marked') WHERE `order_id` = ?";
     $updateStmt = mysqli_prepare($conn, $updateSql);
     mysqli_stmt_bind_param($updateStmt, 'i', $rowId);
     mysqli_stmt_execute($updateStmt);
@@ -18,12 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Retrieve the mark status from the database for all rows
-$retrieveSql = "SELECT `sno`, `mark` FROM `orders`";
+$retrieveSql = "SELECT `order_id`, `mark` FROM `orders`";
 $retrieveResult = mysqli_query($conn, $retrieveSql);
 $markValues = array();
 
 while ($row = mysqli_fetch_assoc($retrieveResult)) {
-  $markValues[$row['sno']] = $row['mark'];
+  $markValues[$row['order_id']] = $row['mark'];
 }
 
 mysqli_close($conn);
@@ -76,7 +76,7 @@ mysqli_close($conn);
     include 'partials/_dbconnect.php';
 
     // Fetch unique times and emails from the orders table
-    $sql = "SELECT DISTINCT time, email FROM orders";
+    $sql = "SELECT DISTINCT order_time, email FROM orders";
     $result = mysqli_query($conn, $sql);
 
     // Create an associative array to store the form values for each time and email
@@ -84,11 +84,11 @@ mysqli_close($conn);
 
     // Fetch the form values for each time and email
     while ($row = mysqli_fetch_assoc($result)) {
-      $time = $row['time'];
+      $time = $row['order_time'];
       $email = $row['email'];
 
       // Fetch the form values from the database for the current time and email
-      $sql = "SELECT * FROM orders WHERE time = '$time' AND email = '$email'";
+      $sql = "SELECT * FROM orders WHERE order_time = '$time' AND email = '$email'";
       $orderResult = mysqli_query($conn, $sql);
 
       // Create an array to store the values for the current time and email
@@ -98,7 +98,7 @@ mysqli_close($conn);
 
       // Loop through the rows and store the relevant values
       while ($orderRow = mysqli_fetch_assoc($orderResult)) {
-        $values['sno'] = $orderRow['sno'];
+        $values['order_id'] = $orderRow['order_id'];
         $values['name'] = $orderRow['name'];
         $values['phone'] = $orderRow['phone'];
         $values['address'] = $orderRow['address'];
@@ -134,7 +134,7 @@ mysqli_close($conn);
         $sn = 0;
         foreach ($formValues as $values) {
           $sn++;
-          $rowId = $values['sno'];
+          $rowId = $values['order_id'];
           $markValue = $markValues[$rowId] ?? '';
 
           // Add the mark status to the button and row classes
