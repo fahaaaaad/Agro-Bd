@@ -211,11 +211,11 @@
                 <label for="interest"><span style="color: black">Interest:</span></label>
                 <textarea class="form-control" name="interest" id="interest" rows="3" placeholder="What type of project you want to fund." value="<?php echo $row['interest']; ?>" ></textarea>
               </div>
-
+<!-- 
               <div class="input-group">
                   <label for="address"><span style="color: black">Address:</span></label>
                   <textarea name="address" id="address" class="form-control" rows="4" required placeholder="necessary for product purchase."></textarea>
-              </div>
+              </div> -->
 
               <?php
             }

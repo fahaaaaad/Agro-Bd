@@ -6,24 +6,52 @@
 
   if (isset($_POST['add_to_cart'])) {
     $product_id = $_POST['product_id'];
-    // echo $product_id.'<br>';
     $product_name = $_POST['product_name'];
-    // echo $product_name.'<br>';
     $product_price = $_POST['product_price'];
-    // echo $product_price.'<br>';
     $product_quantity = $_POST['product_quantity'];
-    // echo $product_quantity.'<br>';
 
-
-    $name = 'hasan';
-    $email = 'hasan@gmail.com';
-    $phone = '01811111111';
-    $address = 'okok';
-
-    $sql="INSERT INTO `orders` (`order_id`, `name`, `email`, `phone`, `address`, `order_time`, `product_name`, `product_price`, `product_quantity`, `order_confirm`, `mark`) VALUES (NULL, '$name', '$email', '$phone', '$address', current_timestamp(), '$product_name', '$product_price', '$product_quantity', NULL, 'unmarked')";
+    $sql="SELECT * FROM `user` WHERE `username` LIKE '{$_SESSION['username']}' ";
     $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+      $name = $row['name'];
+      $email = $row['email'];
+      $phone = $row['mobile'];
+      // $address = $row['sent_time'];
+    }
 
-  }
+
+    $sql = "SELECT * FROM `products` WHERE `product_id` = '$product_id' ";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['product_quantity'] > $product_quantity) {
+            $updated_product_quantity = $row['product_quantity'] - $product_quantity;
+            $updateSql = "UPDATE `products` SET `product_quantity` = '$updated_product_quantity' WHERE `products`.`product_id` = $product_id ";
+            $updateResult = mysqli_query($conn, $updateSql);
+
+            if ($updateResult) {
+                $sql = "INSERT INTO `orders` (`order_id`, `username`, `name`, `email`, `phone`, `address`, `order_time`, `product_id`, `product_name`, `product_price`, `product_quantity`, `order_confirm`, `mark`) VALUES (NULL, '{$_SESSION['username']}', '$name', '$email', '$phone', NULL, current_timestamp(), '$product_id', '$product_name', '$product_price', '$product_quantity', 'false', 'unmarked')";
+                $insertResult = mysqli_query($conn, $sql);
+
+                if ($insertResult) {
+                    // Display a pop-up or perform an action
+                    echo "<script>alert('Added to cart successfully!');</script>";
+                } else {
+                    // Handle the case when the query execution fails
+                    echo "Error: " . mysqli_error($conn);
+                }
+            }
+        } else {
+            echo '
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error!</strong> There are not enough products available!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            ';
+        }
+    }
+}
+
+
 
 ?>
 
@@ -80,7 +108,7 @@
           $result = mysqli_query($conn, $sql);
           $sno = 0;
 
-// action='".$_SERVER['PHP_SELF']."'
+            // action='".$_SERVER['PHP_SELF']."'
 
           while ($row = mysqli_fetch_assoc($result)) {
             $sno = $sno + 1;
