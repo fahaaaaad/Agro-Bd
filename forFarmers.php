@@ -49,7 +49,7 @@
               <use xlink:href="#collection"></use>
             </svg>
           </div>
-          <h3 class="fs-2 text-body-emphasis">Access to Input</h3>
+          <h3 class="fs-2 text-body-emphasis">Access to Feed</h3>
           <p>Gain easy access to a wide range of high-quality animal feed. Our trusted network of suppliers ensures reliable and timely availability of
             inputs, empowering farmers to optimize their production.</p>
 
@@ -79,6 +79,31 @@
             offer troubleshooting solutions.</p>
 
         </div>
+        
+        <div class="feature col">
+          <div
+            class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#toggles2"></use>
+            </svg>
+          </div>
+          <h3 class="fs-2 text-body-emphasis">Funding</h3>
+          <p>We connect farmers with funders. Most of the farmers in Bangladesh don't have enough resources to start farming. On the other side, there are a lot of investors to invest in the farming sector. We help farmers by connecting with funders in order to help both.</p>
+        </div> 
+
+        <div class="feature col">
+          <div
+            class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+            <svg class="bi" width="1em" height="1em">
+              <use xlink:href="#toggles2"></use>
+            </svg>
+          </div>
+          <h3 class="fs-2 text-body-emphasis">Information</h3>
+          <p>Farmers can get all the information about all types of farming sectors such as animal farming, cattle farming and fish farming. Farmers will be able to know and gather information about the types of farming sectors, diseases, feed details and tips to get started.</p>
+        </div> 
+
+      </div>
+    </div>
         <!-- <div class="feature col">
           <div
             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">

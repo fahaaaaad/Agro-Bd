@@ -39,46 +39,7 @@
     </div>
 
 
-    <!-- Who do we work with -->
-    <div class="container my-5 text-center"> <!-- Added text-center class -->
-      <div class="d-sm-flex flex-sm-column align-items-center"> <!-- Added align-items-center class -->
-        <h1 class="section-header landing-section-title title-font">
-          Who do we work with
-        </h1>
-
-        <div class="landing-section-content">
-
-          <div class="row">
-            <div class="col-6 py-5">
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Micro-Finance (MFI)</h3>
-                </li>
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Insurances</h3>
-                </li>
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Cooperatives</h3>
-                </li>
-              </ul>
-            </div>
-            <div class="col-6 text-end py-5">
-              <ul class="list-unstyled">
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Banks</h3>
-                </li>
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Investment Groups</h3>
-                </li>
-                <li><i class="bi bi-check-circle"></i>
-                  <h3>Non-Banking Financial Institutions</h3>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="b-example-divider"></div>
 
