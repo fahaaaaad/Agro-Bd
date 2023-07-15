@@ -350,8 +350,8 @@
                   <div>
                     <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
                       style="width:100px;" />
-                      <input type="submit" name="signIn" class="btn btn-danger" id="signIn" value=" Forget Password "
-                      style="width:200px;" />
+                      <a class="btn btn-danger" href="forget_pass.php" role="button">Forget Password?</a>
+                     
                   </div>
                     
                 </form>
@@ -364,7 +364,7 @@
           </div>
         </div>
 
-           <!-- Modal -->
+          <!-- Modal -->
           <!-- signup modal -->
           <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
