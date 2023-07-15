@@ -45,25 +45,13 @@ if (!$conn) {
     } 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //Recipients
     $mail->setFrom('teamorion0007@gmail.com', 'Agro Bd');
     $mail->addAddress($email_r);
 
     //Content
     $mail->isHTML(true);
-    $mail->Subject = 'Here is the subject';
+    $mail->Subject = 'Agro-Bd Account Password';
     $mail->Body    = 'Your password is: <b>'.$user_password.'</b>';
     
 

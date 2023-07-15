@@ -65,7 +65,7 @@
   if($showAlert2){
     echo '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-          <strong>Success!</strong>Your Password have been Updated!!!
+          <strong>Success!</strong>Your Profile have been Updated!!!
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         ';
