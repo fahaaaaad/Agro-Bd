@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 session_start();
-?>
+?> -->
 
 <!doctype html>
 <html lang="en">
@@ -28,7 +28,7 @@ session_start();
     <script>0</script>
 
     <!-- Alert -->
-    <?php
+    <!-- <?php
       if (isset($_SESSION['success']) && $_SESSION['success']) {
           echo '
               <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-bottom:-5px">
@@ -40,7 +40,7 @@ session_start();
           // Reset the session variable to avoid showing the alert on refresh
           unset($_SESSION['success']);
       }
-    ?>
+    ?> -->
 
     <!-- Header -->
     <?php require 'partials/_header.php' ?>
