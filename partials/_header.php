@@ -252,76 +252,75 @@
                             <hr class="dropdown-divider">
                           </li>
                           <li style="padding-bottom: 12px;"><a href="#">Turkey</a></li> -->
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-
-        </div>
-
-
-
-        <!-- Our Products -->
-        <div class="menu-bar" style="padding-left: -15px;">
-          <ul>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#">Our Products</a>
-              <div class="dropdown-menu">
-                <ul>
-                  <li><a href="animal_feed.php">Animal Feed</a>
-                  <li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a href="fish_feed.php">Fish Feed</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a href="poultry.php">Poultry Feed</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-
-
-        <!-- Our Solutions -->
-        <div class="menu-bar" style="padding-left: -15px;">
-          <ul>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#">Our Solutions</a>
-              <div class="dropdown-menu">
-                <ul>
-                  <li><a href="forFarmers.php">For Farmers</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a href="funders.php"> For Funders</a></li>
-
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a href="supply_chain.php"> Supply Chain</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </ul>
-
-
-
-      <div class="mx-2">
-
-        <!-- Right Side Buttons -->
-        <!-- login button -->
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
-          Login
-        </button>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+  
+          </div>
+  
+  
+  
+          <!-- Our Products -->
+          <div class="menu-bar" style="padding-left: -15px;">
+            <ul>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#">Our Products</a>
+                <div class="dropdown-menu">
+                  <ul>
+                    <li><a href="animal_feed.php">Animal Feed</a><li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="fish_feed.php">Fish Feed</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="poultry.php">Poultry Feed</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+  
+  
+  
+          <!-- Our Solutions -->
+          <div class="menu-bar" style="padding-left: -15px;">
+            <ul>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#">Our Solutions</a>
+                <div class="dropdown-menu">
+                  <ul>
+                    <li><a href="forFarmers.php">For Farmers</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="funders.php"> For Funders</a></li>
+                    
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="supply_chain.php"> Supply Chain</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </ul>
+  
+  
+  
+        <div class="mx-2">
+  
+          <!-- Right Side Buttons -->
+          <!-- login button -->
+          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
+            Login
+          </button>
 
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#signupmodal">
           signup
@@ -378,57 +377,57 @@
           </div>
         </div>
 
-        <!-- Modal -->
-        <!-- signup modal -->
-        <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body ">
-
-
-                <!-- Signup form -->
-                <form action="" method="post">
-                  <img class="mb-2 center" src="logo.png" alt="" width="72px" height="57px">
-                  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-                  <div class="form-floating my-3">
-                    <input type="text" class="form-control" name="full_name" id="floatingInput" required>
-                    <label for="floatingInput">Full Name</label>
-                  </div>
-                  <div class="form-floating my-3">
-                    <input type="text" class="form-control" name="username" id="floatingInput" required>
-                    <label for="floatingInput">Username</label>
-                  </div>
-                  <div class="form-floating my-3">
-                    <input type="email" class="form-control" name="email" id="floatingInput" required>
-                    <label for="floatingInput">Email</label>
-                  </div>
-                  <div class="form-floating my-3">
-                    <input name="mobile" type="text" class="form-control" minlength="11" maxlength="11" id="floatingInput"
-                      required onkeypress="return isNumberKey(event)" />
-                    <label for="floatingInput">mobile</label>
-                  </div>
-                  
-                  <div class="form-floating my-3">
-                    <input type="password" class="form-control " minlength="8" name="password" id="floatingInput">
-                    <label for="floatingInput">Password</label>
-                    <div class="invalid-feedback">Password must be at least 8 characters long.</div>
-                  </div>
+           <!-- Modal -->
+          <!-- signup modal -->
+          <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
+  
+  
+                  <!-- Signup form -->
+                  <form action="php_mailer/email_send.php" method="post">
+                    <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+                    <div class="form-floating my-3">
+                      <input type="text" class="form-control" name="full_name_s" id="floatingInput">
+                      <label for="floatingInput">Full Name</label>
+                    </div>
+                     <div class="form-floating my-3">
+                      <input type="text" class="form-control" name="username_s" id="floatingInput">
+                      <label for="floatingInput">Username</label>
+                    </div>
+                     <div class="form-floating my-3">
+                      <input type="email" class="form-control" name="email_s" id="floatingInput">
+                      <label for="floatingInput">Email</label>
+                    </div>
+                   
+                    <div class="form-floating my-3">
+                      <input name="mobile" name="mobile_s" type="text" class="form-control" minlength="11" maxlength="11" id="mobile" required placeholder="01xxxxxxxxx"
+                onkeypress="return isNumberKey(event)" />
+                      <label for="floatingPassword">Phone Number</label>
+                    </div>
+                    <div class="form-floating my-3">
+                              <input type="password" class="form-control " minlength="8" name="password_s" id="floatingInput" >
+                              <label for="floatingInput">Password</label>
+                              <div class="invalid-feedback">Password must be at least 8 characters long.</div>
+                            </div>
 
                   <div class="form-floating my-3">
                     <div>Chose your account type:</div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                      <input class="form-check-input" type="radio" name="farmer_s" id="flexRadioDefault1">
                       <label class="form-check-label" for="flexRadioDefault1">
                         Farmer
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                      <input class="form-check-input" type="radio" name="funder_s" id="flexRadioDefault2" checked>
                       <label class="form-check-label" for="flexRadioDefault2">
                         Funder
                       </label>
@@ -448,8 +447,12 @@
                   <div>
                     <input type="submit" name="signUp" class="btn btn-success" id="signIn" value=" sign In "
                       style="width:100px;" />
+                      
                   </div>
                 </form>
+
+                <!-- check email modal -->
+                
 
 
               </div>
