@@ -1,5 +1,8 @@
 
 <?php
+  session_start();
+?>
+<?php
 
 $update = false;
 $delete = false;
