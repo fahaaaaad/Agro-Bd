@@ -366,7 +366,10 @@
                   <div>
                     <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
                       style="width:100px;" />
+                      <input type="submit" name="signIn" class="btn btn-danger" id="signIn" value=" Forget Password "
+                      style="width:200px;" />
                   </div>
+                    
                 </form>
 
 
