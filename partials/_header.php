@@ -45,12 +45,31 @@
             }
           }
         }
-        else{
-        echo "Invalid credentials."; 
+        elseif($num == 0){
+          $sql = "SELECT * FROM `user` WHERE `username` = '$username' AND `verify` LIKE 'true'";
+          $result = mysqli_query($conn, $sql);
+          $num = mysqli_num_rows($result);
+          if($num == 1){
+            while($row = mysqli_fetch_assoc($result)){
+              if ($password == $row['password']){
+                // $login = true;
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username;
+                header("location: myProfile.php");
+              }
+              else{
+                echo "Invalid credentials."; 
+              }
+            }
+          }
+          else{
+            echo "Invalid credentials."; 
+          }
         }
       }
       else{
-      echo "Invalid credentials."; 
+        echo "Invalid credentials."; 
       }  
     }
 
@@ -270,68 +289,79 @@
         <div class="mx-2">
   
           <!-- Right Side Buttons -->
+          <?php
+            ////   selecting user   ////
+            require 'partials/_user.php';
+              if($funder){
+                echo'
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="myProfile.php">My Profile</a>
+                  </li>
+                ';
+              }
+          ?>
           <!-- login button -->
           <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Loginmodal">
             Login
           </button>
 
-        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#signupmodal">
-          signup
-        </button>
+          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#signupmodal">
+            signup
+          </button>
 
 
-        <!-- Modal -->
-        <!-- login modal -->
-        <div class="modal fade" id="Loginmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body ">
+          <!-- Modal -->
+          <!-- login modal -->
+          <div class="modal fade" id="Loginmodal" tabindex="-1" aria-labelledby="LoginmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="LoginmodalLabel">Agro Bd</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body ">
 
 
-                <!-- login form -->
-                <form action="" method="post">
-                  <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
-                  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                  <!-- login form -->
+                  <form action="" method="post">
+                    <img class="mb-4 center" src="logo.png" alt="" width="72" height="57">
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                  <div class="form-floating my-3">
-                    <input type="text" class="form-control" name="username" id="floatingInput">
-                    <label for="floatingInput">username</label>
-                  </div>
-                  <div class="form-floating my-3">
-                    <input type="password" class="form-control" name="password" id="floatingPassword"
-                      placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                  </div>
+                    <div class="form-floating my-3">
+                      <input type="text" class="form-control" name="username" id="floatingInput">
+                      <label for="floatingInput">username</label>
+                    </div>
+                    <div class="form-floating my-3">
+                      <input type="password" class="form-control" name="password" id="floatingPassword"
+                        placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
 
-                  <div class="form-check text-start my-3">
-                    <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Remember me
-                    </label>
-                  </div>
+                    <div class="form-check text-start my-3">
+                      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Remember me
+                      </label>
+                    </div>
 
-                  <!-- <button class="btn btn-primary w-100 py-2" type="submit" name="signIn" id="Save" value=" Save ">Sign in</button> -->
-                  <!-- Submit button -->
-                  <div>
-                    <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
-                      style="width:100px;" />
-                      <a class="btn btn-danger" href="forget_pass.php" role="button">Forget Password?</a>
-                    
-                  </div>
-                    
-                </form>
+                    <!-- <button class="btn btn-primary w-100 py-2" type="submit" name="signIn" id="Save" value=" Save ">Sign in</button> -->
+                    <!-- Submit button -->
+                    <div>
+                      <input type="submit" name="signIn" class="btn btn-success" id="signIn" value=" sign In "
+                        style="width:100px;" />
+                        <a class="btn btn-danger" href="forget_pass.php" role="button">Forget Password?</a>
+                      
+                    </div>
+                      
+                  </form>
 
 
-              </div>
-              <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
           <!-- Modal -->
           <!-- signup modal -->
@@ -417,12 +447,12 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
 
 
         <!-- <button type="button" class="btn btn-secondary">En</button>
           <button type="button" class="btn btn-success">Bd</button> -->
-      </div>
+        </div>
     </div>
   </div>
 </nav>
