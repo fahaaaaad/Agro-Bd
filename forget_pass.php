@@ -32,11 +32,11 @@
         <form action=" php_mailer/pass_recovery.php " method="post" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="*****" name="email_r">
-            <label for="floatingInput">Enter the email associated with your account to log in. </label>
+            <label for="floatingInput">Enter the email associated with your account to log in.</label>
           </div>
          
          
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
           <hr class="my-4">
           <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
         </form>
