@@ -1,4 +1,8 @@
+<?php
 
+  session_start();
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -40,7 +44,7 @@ if (isset($_GET['email_exists']) && $_GET['email_exists'] == 'true') {
 // Check if verification is successful
 if (isset($_GET['verification_success'])) {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Verification successful! You can now log in.
+            Verification successful! You can now log in now!!.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>';
 }

@@ -93,7 +93,7 @@
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = 'Here is the subject';
+        $mail->Subject = 'Email Verification token';
         $mail->Body    = 'This is your 6 digit verification code: <b>' . $Verify_token . '</b>';
 
         $mail->send();
