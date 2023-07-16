@@ -192,6 +192,12 @@
             
             ?>
 
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
+                <label for="floatingInputDisabled"><?php echo "Account Type : " . $row['account_type']; ?></label>
+              </div>
+
+
               <div class="input-group">
                 <label for="name"><span style="color: black">Name:</span></label>
                 <input type="text" name="name" class="form-control" id="name" value="<?php echo $row['name']; ?>" />

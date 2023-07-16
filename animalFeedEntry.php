@@ -133,7 +133,7 @@
     <div class="container" style="max-width: 1600px; margin-top: 95px; margin-bottom: 200px; ">
       <div class="row d-flex justify-content-center" style="margin-bottom:65px;">
         <u class="col-auto">
-          <h2 style=" ">Animal Feed Entry</h2>
+          <h2 style=" ">Product Entry</h2>
         </u>
         <!-- <hr/> -->
         <p class="col-12" style="text-align: center;"><span style="color: black">Check before you enter!</span></p> <br>
