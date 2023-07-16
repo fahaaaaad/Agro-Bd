@@ -28,6 +28,17 @@
     <!-- Header -->
     <?php require 'partials/_staffHeader.php'?>
 
+<?php
+if(isset($_GET['alert']) && $_GET['alert'] === 'success'){
+  echo '
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Your message has been sent!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  ';
+}
+?>
+
     <!-- body -->
 
     <div class="container"style="max-width: 1260px; margin-top: 70px; margin-bottom: 200px; ">
@@ -55,7 +66,7 @@
           <tbody>
             <!-- php MySQL query -->
             <?php
-              $sql = "SELECT * FROM `user`";
+              $sql = "SELECT * FROM `user` WHERE `verify` LIKE 'true'";
               $result = mysqli_query($conn,$sql);
               // $num = mysqli_num_rows($result);
               $sn = 0;

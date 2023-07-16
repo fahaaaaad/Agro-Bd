@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $username = $_POST['usernameEdit'];
     $newPassword = $_POST['passwordEdit'];
     //sql query to be executed
-    $sql ="UPDATE `login` SET `password` = '$newPassword' WHERE `login`.`username` = '$username'";
+    $sql ="UPDATE `staff` SET `password` = '$newPassword' WHERE `staff`.`username` = '$username'";
     $result = mysqli_query($conn, $sql);
     if($result){
       $update = true;
@@ -31,11 +31,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //  Removing Data from the DataBase
 if(isset($_GET['delete'])){
   $username = $_GET['delete'];
-  $sql = "DELETE FROM `myinformation` WHERE `username` = '$username'";
+  $sql = "DELETE FROM `staff` WHERE `username` = '$username'";
   $result = mysqli_query($conn, $sql);
 
-  $sql = "DELETE FROM `login` WHERE `username` = '$username'";
-  $result = mysqli_query($conn, $sql);
   if($result){
     $delete = true;
   }
@@ -147,7 +145,7 @@ if(isset($_GET['delete'])){
           <tbody>
             <!-- php MySQL query -->
             <?php
-              $sql = "SELECT * FROM `login`";
+              $sql = "SELECT * FROM `staff`";
               $result = mysqli_query($conn,$sql);
               // $num = mysqli_num_rows($result);
               $sn = 0;

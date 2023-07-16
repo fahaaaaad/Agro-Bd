@@ -65,7 +65,7 @@
           <tbody>
             <!-- php MySQL query -->
             <?php
-              $sql = "SELECT * FROM `myinformation`";
+              $sql = "SELECT * FROM `staff`";
               $result = mysqli_query($conn,$sql);
               // $num = mysqli_num_rows($result);
               $sn = 0;
