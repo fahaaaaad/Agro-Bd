@@ -39,48 +39,38 @@
 
     <!-- Header -->
     <?php require 'partials/_staffHeader.php';
-      $showAlert = false;
-      if(isset($_POST['Send'])){
-        $messege = $_POST['messege'];
-        $center_person = $_POST['center_person'];
+$showAlert = false;
+if(isset($_POST['Send'])){
+  $messege = $_POST['messege'];
+  $center_person = $_POST['center_person'];
 
-        
-        $sql = "SELECT * FROM `inbox` WHERE `sender` LIKE '{$_SESSION['username']}' AND `center_person` LIKE '$center_person' AND `messege` LIKE '$messege' ";
-        $result = mysqli_query($conn, $sql);
-        if($result){
-          echo '
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>Error!</strong> Your have already sent the messege!!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          ';
-        }
-        else{
-          $sql = "INSERT INTO `inbox` (`id`, `sender`, `center_person`, `messege`, `sent_time`) VALUES (NULL, '{$_SESSION['username']}', '$center_person', '$messege', current_timestamp()); ";
-          $result = mysqli_query($conn, $sql);
-          if($result){
-            $showAlert = true;
-          }
-          else{
-            echo '
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>Error!</strong>Try again later !!!
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                ';
-          }
-        }
-      }
+  $sql = "INSERT INTO `inbox` (`id`, `sender`, `center_person`, `messege`, `sent_time`) VALUES (NULL, '{$_SESSION['username']}', '$center_person', '$messege', current_timestamp()); ";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    $showAlert = true;
+    // Redirect to a different page to avoid form resubmission
+    header("Location: users.php?alert=success");
+    exit(); // Ensure that the script stops executing after the redirect
+  }
+  else{
+    echo '
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> Try again later!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    ';
+  }
+}
 
 
-      if($showAlert){
-        echo '
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-              <strong>Success!</strong>Your Password have been Updated!!!
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            ';
-      }
+      // if($showAlert){
+      //   echo '
+      //       <div class="alert alert-success alert-dismissible fade show" role="alert">
+      //         <strong>Success!</strong>Your messege has been sent!!!
+      //         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      //       </div>
+      //       ';
+      // }
 
     ?>
 

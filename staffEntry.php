@@ -14,30 +14,13 @@
     $gender = $_POST['gender'];
     $religion = $_POST['religion'];
 
-
-    $sql = "SELECT * FROM `login` WHERE `username` LIKE '$username' ";
+    $sql = "INSERT INTO `staff` (`sno`, `username`, `password`, `name`, `email`, `email2`, `mobile`, `mobile2`, `dateOfBirth`, `gender`, `religion`) VALUES (NULL, '$username', '12345', '$name', '$email', NULL, '$mobile', NULL, NULL, '$gender', '$religion'); ";
     $result = mysqli_query($conn, $sql);
-    $num = mysqli_num_rows($result);
-    if($num > 0){
-      $usernameExists = true; 
+    if($result){
+      $success = true;
     }
     else{
-      $sql = "INSERT INTO `login` (`sno`, `username`, `password`) VALUES (NULL, '$username', '12345')";
-      $result = mysqli_query($conn, $sql);
-      if($result){
-        $sql = "INSERT INTO `myInformation` (`sno`, `username`, `name`, `email`, `mobile`, `gender`,`religion`) VALUES (NULL, '$username', '$name', '$email', '$mobile', '$gender', '$religion')";
-        $result = mysqli_query($conn, $sql);
-        if($result){
-          $success = true;
-        }
-        else{
-          $sql = "DELETE FROM `login` WHERE `username` = '$username'";
-          $result = mysqli_query($conn, $sql);
-        }
-      }
-      else{
-        echo "Failed to Updated record successfully! refresh the page (F5) and try again.<br>";
-      }
+      echo "Failed to Updated record successfully! refresh the page (F5) and try again.<br>";
     }
   }
 

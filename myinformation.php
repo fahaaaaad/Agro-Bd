@@ -47,7 +47,7 @@
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
     $religion = mysqli_real_escape_string($conn, $_POST['religion']);
     
-    $sql = "UPDATE `myInformation` SET `name` = '$name', `email` = '$email', `email2` = '$email2', `mobile` = '$mobile',`mobile2` = '$mobile2', `dateOfBirth` = '$dateOfBirth', `gender` = '$gender', `religion` = '$religion' WHERE `myInformation`.`username` = '{$_SESSION['username']}' ";
+    $sql = "UPDATE `staff` SET `name` = '$name', `email` = '$email', `email2` = '$email2', `mobile` = '$mobile',`mobile2` = '$mobile2', `dateOfBirth` = '$dateOfBirth', `gender` = '$gender', `religion` = '$religion' WHERE `staff`.`username` = '{$_SESSION['username']}' ";
     $result = mysqli_query($conn, $sql);
     if($result){
       $showAlert2 = true;
@@ -86,7 +86,7 @@
         // if($driver){
         //   $sql = "SELECT * FROM `dlogin` WHERE `loginIdD` = '{$_SESSION['loginID']}' ";
         // }
-        $sql = "SELECT * FROM `login` WHERE `username` = '{$_SESSION['username']}' ";
+        $sql = "SELECT * FROM `staff` WHERE `username` = '{$_SESSION['username']}' ";
         $result = mysqli_query($conn, $sql);
         $num = mysqli_num_rows($result);
         if($num == 1){
@@ -101,7 +101,7 @@
                 // if($driver){
                 //   $sql = "UPDATE `dlogin` SET `password` = '$NewPassword' WHERE `dlogin`.`loginIdD` = '{$_SESSION['loginID']}' ";
                 // }
-                $sql = "UPDATE `login` SET `password` = '$NewPassword' WHERE `login`.`username` = '{$_SESSION['username']}' ";
+                $sql = "UPDATE `staff` SET `password` = '$NewPassword' WHERE `staff`.`username` = '{$_SESSION['username']}' ";
                 $result = mysqli_query($conn, $sql);
                 if($result){
                   $showAlert = true;
@@ -186,7 +186,7 @@
               <h5 class="h5 mb-3">My Information:</h5>
             </u>
             <?php
-            $sql = "SELECT * FROM `myInformation` WHERE `username` = '{$_SESSION['username']}'";
+            $sql = "SELECT * FROM `staff` WHERE `username` = '{$_SESSION['username']}'";
               $result = mysqli_query($conn,$sql);
               if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_assoc($result)){
