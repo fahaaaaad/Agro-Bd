@@ -9,7 +9,7 @@
       $username = $_POST['username'];
       $password = $_POST['password'];
 
-      $sql = "SELECT * FROM `login` WHERE `username` = '$username'";
+      $sql = "SELECT * FROM `staff` WHERE `username` = '$username'";
       $result = mysqli_query($conn, $sql);
       $num = mysqli_num_rows($result);
       // echo $num ;
